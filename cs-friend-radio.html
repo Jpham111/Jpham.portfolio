@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>friend.radio — Daily Music Sharing App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header minimal">
+    <nav class="nav right-nav">
+      <div class="nav-links">
+        <a href="index.html#work" class="nav-item"><span>← Back</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="study-header">FRIEND.RADIO • SHIPPED 2024</div>
+    <h1 class="study-title">Daily Music Sharing App</h1>
+
+    <div class="study-hero">
+      <video controls poster="https://picsum.photos/seed/friend-radio-hero/1400/700" style="width: 100%; max-width: 100%; height: auto; max-height: 400px; object-fit: contain;">
+        <source src="videos/Friend-radio-demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="study-layout">
+      <aside class="study-sidebar">
+        <a class="active" href="#overview">Overview</a>
+        <a href="#observations">Initial Observations</a>
+        <a href="#market">Market Research</a>
+        <a href="#users">Becoming My Users</a>
+        <a href="#competitors">Competitor Research</a>
+        <a href="#solution">Solution</a>
+        <a href="#designs">Final Designs</a>
+        <a href="#reflection">Reflection</a>
+      </aside>
+
+      <article class="study-content">
+        <section id="overview" class="study-section">
+          <div class="study-meta">
+            <div class="block"><strong>Project</strong> Friend Radio - daily music sharing app</div>
+            <div class="block"><strong>Timeline</strong> August – November 2024 (4 months)</div>
+            <div class="block"><strong>Role</strong> Product Designer & Full-Stack Developer</div>
+            <div class="block"><strong>Tech Stack</strong> Figma, Supabase, Firestore, Vercel</div>
+          </div>
+          <div class="study-intro">
+            <h3>The Problem</h3>
+            <p>My friends and I were stuck in music discovery fatigue — constantly listening to the same songs. Existing music discovery felt algorithmic and impersonal, lacking the human connection that makes recommendations meaningful.</p>
+            <h3>The Solution</h3>
+            <p>Built Friend Radio — a simple app where each person posts one song URL from any streaming platform once per day, creating a curated daily playlist of friend recommendations.</p>
+            <h3>Impact</h3>
+            <ul>
+              <li>100% daily engagement from friend group (12 users)</li>
+              <li>Daily habit formation — consistent morning check-ins</li>
+              <li>60% increase in new music discoveries</li>
+              <li>Cross-platform success — works with all streaming services</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="observations" class="study-section">
+          <h3>Initial Observations</h3>
+          <h4>Music discovery problems we experienced</h4>
+          <ul>
+            <li>Listening to the same songs repeatedly</li>
+            <li>Spotify/Apple algorithms felt repetitive and disconnected</li>
+            <li>Great friend recommendations were forgotten</li>
+            <li>No simple way to share daily music discoveries</li>
+          </ul>
+          <h4>Friend feedback</h4>
+          <ul>
+            <li>"I'm bored of my music but don't know where to find new stuff"</li>
+            <li>"I trust my friends' taste more than algorithms"</li>
+            <li>"When friends recommend songs, I forget to listen later"</li>
+          </ul>
+          <h4>Key insight</h4>
+          <p>The best music discoveries come from trusted friends, but there was no simple way to share and consume daily recommendations within our close group.</p>
+        </section>
+
+        <section id="market" class="study-section">
+          <h3>Market Research</h3>
+          <h4>Music discovery landscape</h4>
+          <ul>
+            <li>73% of users rely on friends over algorithms for recommendations</li>
+            <li>Music consumed daily by 92% of young adults</li>
+            <li>Friends use different platforms (Spotify, Apple, SoundCloud, YouTube)</li>
+          </ul>
+          <h4>Existing solutions gaps</h4>
+          <ul>
+            <li><strong>Social media</strong>: Music posts lost in feeds</li>
+            <li><strong>Spotify Social</strong>: Limited to one platform</li>
+            <li><strong>Group chats</strong>: Links buried in conversation</li>
+          </ul>
+          <h4>Opportunity</h4>
+          <p>Create a friend-focused, platform-agnostic daily music sharing experience that works across all streaming services.</p>
+        </section>
+
+        <section id="users" class="study-section">
+          <h3>Becoming My Users</h3>
+          <h4>Research methods</h4>
+          <ul>
+            <li>Daily observation of friend group music sharing behavior</li>
+            <li>8 informal interviews about music discovery habits</li>
+            <li>A/B testing different sharing mechanics</li>
+            <li>Usage tracking during beta testing</li>
+          </ul>
+          <h4>Primary users: College friends (ages 20–24)</h4>
+          <ul>
+            <li><strong>Goal</strong>: Discover new music that matches their taste</li>
+            <li><strong>Behavior</strong>: Uses multiple streaming platforms, shares in group chats</li>
+            <li><strong>Quote</strong>: "I trust my friends' music taste more than any algorithm"</li>
+          </ul>
+          <h4>Key insights</h4>
+          <ul>
+            <li>One song per day felt right — not overwhelming but consistent</li>
+            <li>Platform flexibility crucial — friends used different services</li>
+            <li>Daily reset created urgency — made people check regularly</li>
+            <li>Simplicity was key — complex features were ignored</li>
+          </ul>
+        </section>
+
+        <section id="competitors" class="study-section">
+          <h3>Competitor Research</h3>
+          <h4>Alternatives analyzed</h4>
+          <ul>
+            <li><strong>JQBX</strong>: Too complex, now discontinued</li>
+            <li><strong>Discord music bots</strong>: Platform-locked, not daily-focused</li>
+            <li><strong>Spotify/Apple social</strong>: Limited to single platforms</li>
+          </ul>
+          <h4>Key findings</h4>
+          <ul>
+            <li>No simple daily sharing apps for cross-platform music</li>
+            <li>Most solutions too complex with unnecessary features</li>
+            <li>Platform lock-in prevented equal participation</li>
+          </ul>
+          <h4>Our advantage</h4>
+          <p>Simple daily ritual + platform agnostic + friend-only focus</p>
+        </section>
+
+        <section id="solution" class="study-section">
+          <h3>Solution</h3>
+          <h4>Design principles</h4>
+          <ul>
+            <li>One song, one day — Constraint creates focus and habit</li>
+            <li>Platform agnostic — Accept URLs from any streaming service</li>
+            <li>Friend-only — No strangers, just trusted connections</li>
+            <li>Daily refresh — Keeps experience fresh and urgent</li>
+          </ul>
+          <h4>Key features</h4>
+          <ul>
+            <li>Simple URL input — paste any music link from any platform</li>
+            <li>Daily submission limit — forces thoughtful curation</li>
+            <li>Shared daily playlist — see everyone's picks in one place</li>
+            <li>24-hour reset — list refreshes daily for freshness</li>
+          </ul>
+          <h4>A/B testing results</h4>
+          <ul>
+            <li>One song vs. multiple: 3× higher engagement</li>
+            <li>Daily vs. weekly reset: 85% more check-ins</li>
+            <li>URL paste vs. search: 90% preferred direct paste</li>
+          </ul>
+        </section>
+
+        <section id="designs" class="study-section">
+          <h3>Final Designs</h3>
+          <h4>Core experience</h4>
+          <ul>
+            <li>Clean landing page: "Share one song a day and discover what others are listening to"</li>
+            <li>Simple submission: One URL input field with submit button</li>
+            <li>Daily playlist view: List of all friend submissions with attribution</li>
+            <li>Cross-platform: Works on desktop and mobile</li>
+          </ul>
+          
+          <div class="design-process">
+            <h4>Design Process</h4>
+            <div class="process-images">
+              <img src="images/design-process-1.jpg" alt="Friend.radio Design Process Step 1" class="process-image">
+              <img src="images/design-process-2.jpg" alt="Friend.radio Design Process Step 2" class="process-image">
+              <img src="images/design-process-3.jpg" alt="Friend.radio Design Process Step 3" class="process-image">
+              <img src="images/design-process-4.jpg" alt="Friend.radio Design Process Step 4" class="process-image">
+            </div>
+          </div>
+          <h4>Technical implementation</h4>
+          <ul>
+            <li>Real-time updates — submissions appear immediately</li>
+            <li>URL validation — accepts all major streaming platforms</li>
+            <li>Daily auto-reset — clears list every 24 hours</li>
+            <li>Minimal authentication — simple friend group access</li>
+          </ul>
+        </section>
+
+        <section id="reflection" class="study-section">
+          <h3>Reflection</h3>
+          <h4>Results (3 months post‑launch)</h4>
+          <ul>
+            <li>100% daily engagement from 12-person friend group</li>
+            <li>Habit formation — consistent morning check-ins</li>
+            <li>60% more new music in friends' libraries</li>
+            <li>Increased social bonding through shared music</li>
+          </ul>
+          <h4>What worked</h4>
+          <ul>
+            <li>One song constraint created perfect engagement balance</li>
+            <li>Platform flexibility — no one excluded by streaming choice</li>
+            <li>Daily reset urgency drove consistent usage</li>
+            <li>Friend-only focus provided trusted recommendations</li>
+          </ul>
+          <h4>Key challenges</h4>
+          <ul>
+            <li>API complexity — handling multiple streaming platform formats</li>
+            <li>Real-time architecture — implementing live updates efficiently</li>
+            <li>Cross-platform compatibility — consistent experience everywhere</li>
+          </ul>
+          <h4>User requests for v2</h4>
+          <ul>
+            <li>Song previews — hear snippets before clicking</li>
+            <li>Album artwork — visual appeal enhancement</li>
+            <li>Historical access — revisit previous days</li>
+            <li>Save functionality — bookmark favorite discoveries</li>
+          </ul>
+          <h4>Personal growth</h4>
+          <ul>
+            <li>End-to-end development — problem to shipped product</li>
+            <li>Constraint-driven design — learned how limitations improve experiences</li>
+            <li>User-centered iteration — building based on real friend feedback</li>
+            <li>Technical problem-solving — complex integrations and data management</li>
+          </ul>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer minimal"></footer>
+  <script src="script.js" defer></script>
+</body>
+</html>
