@@ -325,6 +325,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // Music Player Functionality
   if (window.location.pathname.includes('radio.html')) {
     console.log('Initializing music player on radio page');
+    
+    // Add fallback admin button listener
+    const adminToggle = document.getElementById('admin-toggle');
+    if (adminToggle) {
+      console.log('Found admin toggle button, adding fallback listener');
+      adminToggle.addEventListener('click', (e) => {
+        console.log('Fallback admin button clicked');
+        e.preventDefault();
+        alert('Fallback button clicked!');
+      });
+    } else {
+      console.error('Admin toggle button not found in DOM');
+    }
+    
     // Add a small delay to ensure DOM is fully ready
     setTimeout(() => {
       initMusicPlayer();
@@ -522,8 +536,17 @@ class MusicPlayer {
   setupAdminPanel() {
     // Admin toggle button
     console.log('Setting up admin panel, adminToggle element:', this.adminToggle);
-    this.adminToggle.addEventListener('click', () => {
-      console.log('Admin toggle clicked');
+    
+    if (!this.adminToggle) {
+      console.error('Admin toggle button not found!');
+      return;
+    }
+    
+    this.adminToggle.addEventListener('click', (e) => {
+      console.log('Admin toggle clicked', e);
+      e.preventDefault();
+      e.stopPropagation();
+      alert('Button clicked!'); // Temporary test
       this.toggleAdminPanel();
     });
 
@@ -1264,5 +1287,12 @@ class MusicPlayer {
 
 // Initialize music player
 function initMusicPlayer() {
-  new MusicPlayer();
+  console.log('initMusicPlayer called');
+  try {
+    const player = new MusicPlayer();
+    console.log('MusicPlayer created successfully:', player);
+    return player;
+  } catch (error) {
+    console.error('Error creating MusicPlayer:', error);
+  }
 }
