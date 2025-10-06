@@ -2,6 +2,26 @@ console.log('External script.js loaded - Updated with Hello text');
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('External script.js DOMContentLoaded fired');
+  
+  // Preloader
+  let percentage = 0;
+  const percentageElement = document.querySelector('.loader-percentage');
+  const preloader = document.querySelector('.preloader');
+  const progressBar = document.querySelector('.loader-progress');
+
+  const loadInterval = setInterval(() => {
+      percentage += Math.random() * 15;
+      if (percentage >= 100) {
+          percentage = 100;
+          clearInterval(loadInterval);
+          setTimeout(() => {
+              preloader.classList.add('fade-out');
+          }, 500);
+      }
+      percentageElement.textContent = Math.floor(percentage) + '%';
+      progressBar.style.width = percentage + '%';
+  }, 100);
+  
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
