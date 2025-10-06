@@ -368,6 +368,11 @@ class MusicPlayer {
     // Password for admin access (change this to your desired password)
     this.adminPassword = 'admin123';
     this.isAdminMode = false;
+    
+    // Add admin toggle tooltip
+    if (this.adminToggle) {
+      this.adminToggle.title = 'Enter Admin Mode';
+    }
 
     // Start with empty playlist - no placeholder songs
     this.songs = [];
@@ -435,7 +440,7 @@ class MusicPlayer {
       if (this.isAdminMode) {
         this.fileInput.click();
       } else {
-        alert('Please enter admin mode to upload files. Click the 🔧 button and enter the password.');
+        this.showAdminPrompt();
       }
     });
 
@@ -443,6 +448,8 @@ class MusicPlayer {
     this.fileInput.addEventListener('change', (e) => {
       if (this.isAdminMode) {
         this.handleFiles(e.target.files);
+      } else {
+        this.showAdminPrompt();
       }
     });
 
@@ -464,9 +471,52 @@ class MusicPlayer {
       if (this.isAdminMode) {
         this.handleFiles(e.dataTransfer.files);
       } else {
-        alert('Please enter admin mode to upload files. Click the 🔧 button and enter the password.');
+        this.showAdminPrompt();
       }
     });
+  }
+
+  showAdminPrompt() {
+    const prompt = document.createElement('div');
+    prompt.className = 'admin-prompt';
+    prompt.innerHTML = `
+      <div class="admin-prompt-content">
+        <h4>Admin Access Required</h4>
+        <p>To upload MP3 files, you need to enter admin mode.</p>
+        <p>Click the 🔧 button in the top-right corner and enter the password: <strong>admin123</strong></p>
+        <button onclick="this.parentElement.parentElement.remove()">Got it!</button>
+      </div>
+    `;
+    prompt.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    `;
+    prompt.querySelector('.admin-prompt-content').style.cssText = `
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      margin: 20px;
+    `;
+    prompt.querySelector('button').style.cssText = `
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+    `;
+    document.body.appendChild(prompt);
   }
 
   setupAdminPanel() {
@@ -495,25 +545,138 @@ class MusicPlayer {
 
   toggleAdminPanel() {
     if (!this.isAdminMode) {
-      const password = prompt('Enter admin password:');
-      if (password === this.adminPassword) {
-        this.isAdminMode = true;
-        this.adminPanel.style.display = 'block';
-        this.adminToggle.textContent = '🔒';
-        this.adminToggle.style.background = '#ff4757';
-        this.adminToggle.style.color = '#fff';
-        console.log('Admin mode activated');
-      } else {
-        alert('Incorrect password!');
-      }
+      this.showPasswordPrompt();
     } else {
       this.isAdminMode = false;
       this.adminPanel.style.display = 'none';
       this.adminToggle.textContent = '🔧';
       this.adminToggle.style.background = '#fff';
       this.adminToggle.style.color = '#000';
+      this.adminToggle.title = 'Enter Admin Mode';
+      
+      // Remove admin mode indicator
+      this.hideAdminModeIndicator();
       console.log('Admin mode deactivated');
     }
+  }
+
+  showPasswordPrompt() {
+    const prompt = document.createElement('div');
+    prompt.className = 'password-prompt';
+    prompt.innerHTML = `
+      <div class="password-prompt-content">
+        <h4>Admin Access</h4>
+        <p>Enter the admin password to upload MP3 files:</p>
+        <input type="password" id="admin-password-input" placeholder="Enter password" />
+        <div class="password-actions">
+          <button id="admin-login-btn">Login</button>
+          <button id="admin-cancel-btn">Cancel</button>
+        </div>
+        <div class="password-hint">
+          <small>Hint: The password is "admin123"</small>
+        </div>
+      </div>
+    `;
+    prompt.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    `;
+    prompt.querySelector('.password-prompt-content').style.cssText = `
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 350px;
+      margin: 20px;
+    `;
+    prompt.querySelector('input').style.cssText = `
+      width: 100%;
+      padding: 12px;
+      margin: 15px 0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+    `;
+    prompt.querySelector('.password-actions').style.cssText = `
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
+    `;
+    prompt.querySelectorAll('button').forEach(btn => {
+      btn.style.cssText = `
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+      `;
+    });
+    prompt.querySelector('#admin-login-btn').style.cssText += `
+      background: var(--accent);
+      color: white;
+    `;
+    prompt.querySelector('#admin-cancel-btn').style.cssText += `
+      background: #f5f5f5;
+      color: #333;
+    `;
+    prompt.querySelector('.password-hint').style.cssText = `
+      margin-top: 10px;
+      color: #666;
+    `;
+    
+    document.body.appendChild(prompt);
+    
+    const passwordInput = prompt.querySelector('#admin-password-input');
+    const loginBtn = prompt.querySelector('#admin-login-btn');
+    const cancelBtn = prompt.querySelector('#admin-cancel-btn');
+    
+    passwordInput.focus();
+    
+    const handleLogin = () => {
+      const password = passwordInput.value;
+      if (password === this.adminPassword) {
+        this.isAdminMode = true;
+        this.adminPanel.style.display = 'block';
+        this.adminToggle.textContent = '🔒';
+        this.adminToggle.style.background = '#ff4757';
+        this.adminToggle.style.color = '#fff';
+        this.adminToggle.title = 'Exit Admin Mode';
+        
+        // Add visual indicator that admin mode is active
+        this.showAdminModeIndicator();
+        console.log('Admin mode activated');
+        document.body.removeChild(prompt);
+      } else {
+        passwordInput.style.borderColor = '#ff4757';
+        passwordInput.value = '';
+        passwordInput.placeholder = 'Incorrect password! Try again...';
+        setTimeout(() => {
+          passwordInput.style.borderColor = '#ddd';
+          passwordInput.placeholder = 'Enter password';
+        }, 2000);
+      }
+    };
+    
+    const handleCancel = () => {
+      document.body.removeChild(prompt);
+    };
+    
+    loginBtn.addEventListener('click', handleLogin);
+    cancelBtn.addEventListener('click', handleCancel);
+    passwordInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        handleLogin();
+      }
+    });
   }
 
   async loadPlaylistFromStorage() {
@@ -557,8 +720,20 @@ class MusicPlayer {
       return;
     }
     
-    const filePromises = Array.from(files).map(async (file) => {
+    // Show upload progress
+    this.showUploadProgress(files.length);
+    
+    const filePromises = Array.from(files).map(async (file, index) => {
       console.log('Processing file:', file.name, 'Type:', file.type);
+      
+      // Check file size (limit to 50MB)
+      const maxSize = 50 * 1024 * 1024; // 50MB
+      if (file.size > maxSize) {
+        console.error('File too large:', file.name, file.size);
+        this.showUploadError(`${file.name} is too large (max 50MB)`);
+        return null;
+      }
+      
       if (file.type.startsWith('audio/')) {
         try {
           // Convert file to base64 for persistent storage
@@ -569,28 +744,203 @@ class MusicPlayer {
             url: base64Data, // Store as base64 data URL
             isPlaceholder: false,
             isPermanent: false,
-            isUploaded: true
+            isUploaded: true,
+            fileSize: file.size,
+            fileType: file.type
           };
           console.log('Added song:', song.title);
+          this.updateUploadProgress(index + 1, files.length);
           return song;
         } catch (error) {
           console.error('Error processing file:', error);
+          this.showUploadError(`Error processing ${file.name}: ${error.message}`);
           return null;
         }
       } else {
         console.log('File not audio type:', file.type);
+        this.showUploadError(`${file.name} is not an audio file`);
         return null;
       }
     });
 
     const newSongs = await Promise.all(filePromises);
     const validSongs = newSongs.filter(song => song !== null);
-    this.songs.push(...validSongs);
+    
+    if (validSongs.length > 0) {
+      this.songs.push(...validSongs);
+      this.renderPlaylist();
+      await this.savePlaylistToStorage();
+      
+      if (this.songs.length > 0 && !this.audio.src) {
+        this.loadSong(0);
+      }
+      
+      this.showUploadSuccess(validSongs.length);
+    }
+    
+    this.hideUploadProgress();
+  }
 
-    this.renderPlaylist();
-    await this.savePlaylistToStorage();
-    if (this.songs.length > 0 && !this.audio.src) {
-      this.loadSong(0);
+  showUploadProgress(totalFiles) {
+    const progress = document.createElement('div');
+    progress.id = 'upload-progress';
+    progress.innerHTML = `
+      <div class="upload-progress-content">
+        <h4>Uploading Files...</h4>
+        <div class="progress-bar">
+          <div class="progress-fill" id="upload-progress-fill"></div>
+        </div>
+        <div class="progress-text" id="upload-progress-text">0 / ${totalFiles} files processed</div>
+      </div>
+    `;
+    progress.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      z-index: 10000;
+      min-width: 250px;
+    `;
+    progress.querySelector('.progress-bar').style.cssText = `
+      width: 100%;
+      height: 8px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 10px 0;
+    `;
+    progress.querySelector('.progress-fill').style.cssText = `
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.3s ease;
+    `;
+    document.body.appendChild(progress);
+  }
+
+  updateUploadProgress(current, total) {
+    const progressFill = document.getElementById('upload-progress-fill');
+    const progressText = document.getElementById('upload-progress-text');
+    if (progressFill && progressText) {
+      const percentage = (current / total) * 100;
+      progressFill.style.width = `${percentage}%`;
+      progressText.textContent = `${current} / ${total} files processed`;
+    }
+  }
+
+  hideUploadProgress() {
+    const progress = document.getElementById('upload-progress');
+    if (progress) {
+      setTimeout(() => {
+        if (progress.parentNode) {
+          progress.parentNode.removeChild(progress);
+        }
+      }, 2000);
+    }
+  }
+
+  showUploadSuccess(count) {
+    const success = document.createElement('div');
+    success.className = 'upload-success';
+    success.innerHTML = `
+      <div class="upload-success-content">
+        <h4>✅ Upload Successful!</h4>
+        <p>${count} file${count > 1 ? 's' : ''} added to playlist</p>
+      </div>
+    `;
+    success.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4CAF50;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      z-index: 10000;
+      animation: slideIn 0.3s ease;
+    `;
+    document.body.appendChild(success);
+    
+    setTimeout(() => {
+      if (success.parentNode) {
+        success.parentNode.removeChild(success);
+      }
+    }, 3000);
+  }
+
+  showUploadError(message) {
+    const error = document.createElement('div');
+    error.className = 'upload-error';
+    error.innerHTML = `
+      <div class="upload-error-content">
+        <h4>❌ Upload Error</h4>
+        <p>${message}</p>
+      </div>
+    `;
+    error.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #f44336;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      z-index: 10000;
+      animation: slideIn 0.3s ease;
+    `;
+    document.body.appendChild(error);
+    
+    setTimeout(() => {
+      if (error.parentNode) {
+        error.parentNode.removeChild(error);
+      }
+    }, 5000);
+  }
+
+  showAdminModeIndicator() {
+    // Remove existing indicator if any
+    this.hideAdminModeIndicator();
+    
+    const indicator = document.createElement('div');
+    indicator.id = 'admin-mode-indicator';
+    indicator.innerHTML = `
+      <div class="admin-mode-indicator-content">
+        <span class="admin-icon">🔒</span>
+        <span class="admin-text">Admin Mode Active</span>
+      </div>
+    `;
+    indicator.style.cssText = `
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #ff4757;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 1000;
+      animation: slideIn 0.3s ease;
+      box-shadow: 0 2px 8px rgba(255, 71, 87, 0.3);
+    `;
+    indicator.querySelector('.admin-mode-indicator-content').style.cssText = `
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    `;
+    indicator.querySelector('.admin-icon').style.cssText = `
+      font-size: 16px;
+    `;
+    document.body.appendChild(indicator);
+  }
+
+  hideAdminModeIndicator() {
+    const indicator = document.getElementById('admin-mode-indicator');
+    if (indicator && indicator.parentNode) {
+      indicator.parentNode.removeChild(indicator);
     }
   }
 
