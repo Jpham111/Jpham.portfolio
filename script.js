@@ -25,6 +25,104 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Sun & Moon Tracker
+  function updateSunPosition() {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      
+      // Calculate time as decimal (e.g., 14:30 = 14.5)
+      const currentTime = hours + minutes / 60;
+      
+      // Sunrise at 6 AM, sunset at 6 PM (18:00)
+      const sunrise = 6;
+      const sunset = 18;
+      const dayDuration = sunset - sunrise;
+      
+      const sun = document.getElementById('sun');
+      const moon = document.getElementById('moon');
+      const sunTracker = document.getElementById('sunTracker');
+      const moonTracker = document.getElementById('moonTracker');
+      const sunInfo = document.getElementById('sunInfo');
+      const moonInfo = document.getElementById('moonInfo');
+      const currentTimeEl = document.getElementById('currentTime');
+      const currentTimeMoonEl = document.getElementById('currentTimeMoon');
+      const dayProgressEl = document.getElementById('dayProgress');
+      const nightProgressEl = document.getElementById('nightProgress');
+      
+      // Update time display
+      const timeString = now.toLocaleTimeString('en-US', { 
+          hour: '2-digit', 
+          minute: '2-digit',
+          hour12: true 
+      });
+      currentTimeEl.textContent = timeString;
+      currentTimeMoonEl.textContent = timeString;
+      
+      // Check if it's day or night
+      const isDay = currentTime >= sunrise && currentTime < sunset;
+      
+      if (isDay) {
+          // Show sun, hide moon
+          sunTracker.style.opacity = '1';
+          moonTracker.style.opacity = '0';
+          sunInfo.style.opacity = '1';
+          moonInfo.style.opacity = '0';
+          document.body.classList.remove('night-mode');
+          
+          // Sun movement
+          const progress = (currentTime - sunrise) / dayDuration;
+          const x = progress * window.innerWidth;
+          const arcProgress = progress * Math.PI;
+          const y = window.innerHeight * 0.7 - (Math.sin(arcProgress) * window.innerHeight * 0.5);
+          
+          sun.style.left = x + 'px';
+          sun.style.top = y + 'px';
+          dayProgressEl.textContent = Math.round(progress * 100) + '%';
+          
+          const scale = 0.8 + (Math.sin(progress * Math.PI) * 0.4);
+          sun.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      } else {
+          // Show moon, hide sun
+          sunTracker.style.opacity = '0';
+          moonTracker.style.opacity = '1';
+          sunInfo.style.opacity = '0';
+          moonInfo.style.opacity = '1';
+          document.body.classList.add('night-mode');
+          
+          // Moon movement (sunset to sunrise next day)
+          let progress, x, y;
+          const nightStart = sunset;
+          const nightEnd = sunrise + 24; // Next day's sunrise
+          const nightDuration = nightEnd - nightStart;
+          
+          let adjustedTime = currentTime;
+          if (currentTime < sunrise) {
+              adjustedTime = currentTime + 24; // Add 24 hours for times after midnight
+          }
+          
+          progress = (adjustedTime - nightStart) / nightDuration;
+          x = progress * window.innerWidth;
+          
+          const arcProgress = progress * Math.PI;
+          y = window.innerHeight * 0.7 - (Math.sin(arcProgress) * window.innerHeight * 0.5);
+          
+          moon.style.left = x + 'px';
+          moon.style.top = y + 'px';
+          nightProgressEl.textContent = Math.round(progress * 100) + '%';
+          
+          const scale = 0.8 + (Math.sin(progress * Math.PI) * 0.3);
+          moon.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      }
+  }
+
+  // Update position every minute
+  updateSunPosition();
+  setInterval(updateSunPosition, 60000);
+
+  // Update on window resize
+  window.addEventListener('resize', updateSunPosition);
+
   // Simple test first
   console.log('Script loaded successfully');
   
