@@ -359,6 +359,8 @@ class MusicPlayer {
     this.adminToggle = document.getElementById('admin-toggle');
     this.savePlaylistBtn = document.getElementById('save-playlist');
     this.clearPlaylistBtn = document.getElementById('clear-playlist');
+    
+    console.log('Admin toggle element found:', this.adminToggle);
     this.volumeBtn = document.getElementById('volume-btn');
     this.volumeSlider = document.getElementById('volume-slider');
     this.volumeValue = document.getElementById('volume-value');
@@ -469,7 +471,9 @@ class MusicPlayer {
 
   setupAdminPanel() {
     // Admin toggle button
+    console.log('Setting up admin panel, adminToggle element:', this.adminToggle);
     this.adminToggle.addEventListener('click', () => {
+      console.log('Admin toggle clicked');
       this.toggleAdminPanel();
     });
 
