@@ -359,6 +359,9 @@ class MusicPlayer {
     this.adminToggle = document.getElementById('admin-toggle');
     this.savePlaylistBtn = document.getElementById('save-playlist');
     this.clearPlaylistBtn = document.getElementById('clear-playlist');
+    this.volumeBtn = document.getElementById('volume-btn');
+    this.volumeSlider = document.getElementById('volume-slider');
+    this.volumeValue = document.getElementById('volume-value');
 
     // Password for admin access (change this to your desired password)
     this.adminPassword = 'admin123';
@@ -371,6 +374,8 @@ class MusicPlayer {
     this.isPlaying = false;
     this.isShuffled = false;
     this.shuffledIndices = [];
+    this.volume = 0.7; // Default volume (70%)
+    this.isMuted = false;
 
     console.log('MusicPlayer constructor completed, calling init()');
     this.init().catch(error => {
@@ -388,6 +393,7 @@ class MusicPlayer {
     console.log('About to render playlist...');
     this.renderPlaylist();
     this.updateDisplay();
+    this.setVolume(this.volume); // Initialize volume
     console.log('MusicPlayer init() completed');
   }
 
@@ -415,6 +421,10 @@ class MusicPlayer {
     this.audio.addEventListener('ended', () => this.nextSong());
     this.audio.addEventListener('play', () => this.onPlay());
     this.audio.addEventListener('pause', () => this.onPause());
+
+    // Volume control
+    this.volumeSlider.addEventListener('input', (e) => this.setVolume(e.target.value / 100));
+    this.volumeBtn.addEventListener('click', () => this.toggleMute());
   }
 
   setupFileUpload() {
@@ -687,6 +697,11 @@ class MusicPlayer {
     this.audio.play().then(() => {
       this.isPlaying = true;
       this.playToggle.checked = true;
+      
+      // Sync with global player
+      if (window.globalMusicPlayer) {
+        window.globalMusicPlayer.syncWithRadioPlayer(this);
+      }
     }).catch(e => {
       console.error('Error playing audio:', e);
     });
@@ -696,6 +711,11 @@ class MusicPlayer {
     this.audio.pause();
     this.isPlaying = false;
     this.playToggle.checked = false;
+    
+    // Sync with global player
+    if (window.globalMusicPlayer) {
+      window.globalMusicPlayer.syncWithRadioPlayer(this);
+    }
   }
 
   previousSong() {
@@ -713,6 +733,11 @@ class MusicPlayer {
     
     this.loadSong(newIndex);
     this.play();
+    
+    // Sync with global player
+    if (window.globalMusicPlayer) {
+      window.globalMusicPlayer.syncWithRadioPlayer(this);
+    }
   }
 
   nextSong() {
@@ -730,6 +755,11 @@ class MusicPlayer {
     
     this.loadSong(newIndex);
     this.play();
+    
+    // Sync with global player
+    if (window.globalMusicPlayer) {
+      window.globalMusicPlayer.syncWithRadioPlayer(this);
+    }
   }
 
   toggleShuffle() {
@@ -792,6 +822,38 @@ class MusicPlayer {
     document.querySelectorAll('.volume-bars .bar').forEach(bar => {
       bar.style.animationPlayState = 'paused';
     });
+  }
+
+  setVolume(volume) {
+    this.volume = Math.max(0, Math.min(1, volume));
+    this.audio.volume = this.volume;
+    this.volumeSlider.value = Math.round(this.volume * 100);
+    this.volumeValue.textContent = Math.round(this.volume * 100) + '%';
+    
+    // Update volume button state
+    if (this.volume === 0) {
+      this.volumeBtn.classList.add('muted');
+    } else {
+      this.volumeBtn.classList.remove('muted');
+    }
+  }
+
+  toggleMute() {
+    if (this.isMuted) {
+      // Unmute
+      this.audio.volume = this.volume;
+      this.volumeSlider.value = Math.round(this.volume * 100);
+      this.volumeValue.textContent = Math.round(this.volume * 100) + '%';
+      this.volumeBtn.classList.remove('muted');
+      this.isMuted = false;
+    } else {
+      // Mute
+      this.audio.volume = 0;
+      this.volumeSlider.value = 0;
+      this.volumeValue.textContent = '0%';
+      this.volumeBtn.classList.add('muted');
+      this.isMuted = true;
+    }
   }
 
   // IndexedDB helper methods

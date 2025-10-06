@@ -1,0 +1,52 @@
+<!-- Global Music Player - Include this on all pages -->
+<div id="global-music-player" class="global-music-player">
+  <div class="global-player-content">
+    <div class="global-track-info">
+      <div class="global-album-art" id="global-album-art"></div>
+      <div class="global-track-details">
+        <div class="global-track-title" id="global-track-title">No music playing</div>
+        <div class="global-artist-name" id="global-artist-name">Start playing from Radio page</div>
+      </div>
+    </div>
+    
+    <div class="global-controls">
+      <button class="global-control-btn" id="global-play-pause">
+        <svg class="global-icon-play" width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M8 5v14l11-7z" fill="currentColor"/>
+        </svg>
+        <svg class="global-icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" fill="currentColor"/>
+        </svg>
+      </button>
+      
+      <button class="global-control-btn" id="global-next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M5 4v16l10-8L5 4zm14 0v16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      
+      <button class="global-control-btn" id="global-volume-btn">
+        <svg class="global-volume-icon" width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      
+      <div class="global-volume-slider-container">
+        <input type="range" id="global-volume-slider" class="global-volume-slider" min="0" max="100" value="70">
+      </div>
+    </div>
+    
+    <div class="global-actions">
+      <a href="radio.html" class="global-radio-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+        </svg>
+        Radio
+      </a>
+    </div>
+  </div>
+  
+  <!-- Hidden Audio Element -->
+  <audio id="global-audio-player" preload="metadata"></audio>
+</div>
