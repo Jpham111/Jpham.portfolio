@@ -773,6 +773,13 @@ video {
   max-width: 400px;
 }
 
+.about-actions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .contact-cta {
   display: inline-flex;
   align-items: center;
@@ -782,12 +789,33 @@ video {
   font-size: 16px;
   text-decoration: none;
   transition: color 0.2s ease;
-  margin-right: 24px;
-  margin-bottom: 8px;
 }
 
 .contact-cta:hover {
   color: var(--accent);
+}
+
+.resume-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.resume-button:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 178, 62, 0.3);
 }
 
 .work-experience {
@@ -881,6 +909,17 @@ video {
   .experience-years {
     margin-left: 0;
     margin-top: 4px;
+  }
+  
+  .about-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .resume-button {
+    width: 100%;
+    justify-content: center;
   }
 }
 
