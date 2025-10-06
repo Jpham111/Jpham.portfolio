@@ -1,5 +1,229 @@
 console.log('External script.js loaded - Updated with Hello text');
 
+// Global admin functionality
+let isAdminMode = false;
+const adminPassword = 'admin123';
+
+function showAdminPasswordPrompt() {
+  const prompt = document.createElement('div');
+  prompt.className = 'password-prompt';
+  prompt.innerHTML = `
+    <div class="password-prompt-content">
+      <h4>Admin Access</h4>
+      <p>Enter the admin password to upload MP3 files:</p>
+      <input type="password" id="admin-password-input" placeholder="Enter password" />
+      <div class="password-actions">
+        <button id="admin-login-btn">Login</button>
+        <button id="admin-cancel-btn">Cancel</button>
+      </div>
+      <div class="password-hint">
+        <small>Hint: The password is "admin123"</small>
+      </div>
+    </div>
+  `;
+  prompt.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  `;
+  prompt.querySelector('.password-prompt-content').style.cssText = `
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 350px;
+    margin: 20px;
+  `;
+  prompt.querySelector('input').style.cssText = `
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+  `;
+  prompt.querySelector('.password-actions').style.cssText = `
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+  `;
+  prompt.querySelectorAll('button').forEach(btn => {
+    btn.style.cssText = `
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    `;
+  });
+  prompt.querySelector('#admin-login-btn').style.cssText += `
+    background: var(--accent);
+    color: white;
+  `;
+  prompt.querySelector('#admin-cancel-btn').style.cssText += `
+    background: #f5f5f5;
+    color: #333;
+  `;
+  prompt.querySelector('.password-hint').style.cssText = `
+    margin-top: 10px;
+    color: #666;
+  `;
+  
+  document.body.appendChild(prompt);
+  
+  const passwordInput = prompt.querySelector('#admin-password-input');
+  const loginBtn = prompt.querySelector('#admin-login-btn');
+  const cancelBtn = prompt.querySelector('#admin-cancel-btn');
+  
+  passwordInput.focus();
+  
+  const handleLogin = () => {
+    const password = passwordInput.value;
+    if (password === adminPassword) {
+      isAdminMode = true;
+      const adminPanel = document.getElementById('admin-panel');
+      if (adminPanel) {
+        adminPanel.style.display = 'block';
+      }
+      const adminToggle = document.getElementById('admin-toggle');
+      if (adminToggle) {
+        adminToggle.textContent = '🔒';
+        adminToggle.style.background = '#ff4757';
+        adminToggle.style.color = '#fff';
+        adminToggle.title = 'Exit Admin Mode';
+      }
+      showAdminModeIndicator();
+      console.log('Admin mode activated');
+      document.body.removeChild(prompt);
+    } else {
+      passwordInput.style.borderColor = '#ff4757';
+      passwordInput.value = '';
+      passwordInput.placeholder = 'Incorrect password! Try again...';
+      setTimeout(() => {
+        passwordInput.style.borderColor = '#ddd';
+        passwordInput.placeholder = 'Enter password';
+      }, 2000);
+    }
+  };
+  
+  const handleCancel = () => {
+    document.body.removeChild(prompt);
+  };
+  
+  loginBtn.addEventListener('click', handleLogin);
+  cancelBtn.addEventListener('click', handleCancel);
+  passwordInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      handleLogin();
+    }
+  });
+}
+
+function showAdminModeIndicator() {
+  // Remove existing indicator if any
+  const existingIndicator = document.getElementById('admin-mode-indicator');
+  if (existingIndicator) {
+    existingIndicator.remove();
+  }
+  
+  const indicator = document.createElement('div');
+  indicator.id = 'admin-mode-indicator';
+  indicator.innerHTML = `
+    <div class="admin-mode-indicator-content">
+      <span class="admin-icon">🔒</span>
+      <span class="admin-text">Admin Mode Active</span>
+    </div>
+  `;
+  indicator.style.cssText = `
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #ff4757;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 71, 87, 0.3);
+  `;
+  indicator.querySelector('.admin-mode-indicator-content').style.cssText = `
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  `;
+  indicator.querySelector('.admin-icon').style.cssText = `
+    font-size: 16px;
+  `;
+  document.body.appendChild(indicator);
+}
+
+function hideAdminModeIndicator() {
+  const indicator = document.getElementById('admin-mode-indicator');
+  if (indicator && indicator.parentNode) {
+    indicator.parentNode.removeChild(indicator);
+  }
+}
+
+function showAdminPrompt() {
+  const prompt = document.createElement('div');
+  prompt.className = 'admin-prompt';
+  prompt.innerHTML = `
+    <div class="admin-prompt-content">
+      <h4>Admin Access Required</h4>
+      <p>To upload MP3 files, you need to enter admin mode.</p>
+      <p>Click the 🔧 button in the top-right corner and enter the password: <strong>admin123</strong></p>
+      <button onclick="this.parentElement.parentElement.remove()">Got it!</button>
+    </div>
+  `;
+  prompt.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  `;
+  prompt.querySelector('.admin-prompt-content').style.cssText = `
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    margin: 20px;
+  `;
+  prompt.querySelector('button').style.cssText = `
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+  `;
+  document.body.appendChild(prompt);
+}
+
+function handleFileUpload(files) {
+  console.log('Handling file upload:', files.length, 'files');
+  // This will be implemented to work with the MusicPlayer class
+  // For now, just show a message
+  alert(`Uploading ${files.length} file(s)...`);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('External script.js DOMContentLoaded fired');
   
@@ -323,20 +547,89 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Music Player Functionality
-  if (window.location.pathname.includes('radio.html')) {
+  console.log('Current pathname:', window.location.pathname);
+  console.log('Current href:', window.location.href);
+  
+  if (window.location.pathname.includes('radio.html') || window.location.href.includes('radio.html')) {
     console.log('Initializing music player on radio page');
     
-    // Add fallback admin button listener
+    // Add direct admin button functionality
     const adminToggle = document.getElementById('admin-toggle');
     if (adminToggle) {
-      console.log('Found admin toggle button, adding fallback listener');
-      adminToggle.addEventListener('click', (e) => {
-        console.log('Fallback admin button clicked');
+      console.log('Found admin toggle button, setting up direct functionality');
+      
+      // Remove any existing event listeners
+      const newAdminToggle = adminToggle.cloneNode(true);
+      adminToggle.parentNode.replaceChild(newAdminToggle, adminToggle);
+      
+      // Add the admin functionality directly
+      newAdminToggle.addEventListener('click', (e) => {
+        console.log('Admin button clicked - showing password prompt');
         e.preventDefault();
-        alert('Fallback button clicked!');
+        e.stopPropagation();
+        if (isAdminMode) {
+          // Exit admin mode
+          isAdminMode = false;
+          const adminPanel = document.getElementById('admin-panel');
+          if (adminPanel) {
+            adminPanel.style.display = 'none';
+          }
+          newAdminToggle.textContent = '🔧';
+          newAdminToggle.style.background = '#fff';
+          newAdminToggle.style.color = '#000';
+          newAdminToggle.title = 'Enter Admin Mode';
+          hideAdminModeIndicator();
+          console.log('Admin mode deactivated');
+        } else {
+          // Enter admin mode
+          showAdminPasswordPrompt();
+        }
       });
+      
     } else {
       console.error('Admin toggle button not found in DOM');
+    }
+    
+    // Set up file upload area
+    const fileUploadArea = document.getElementById('file-upload-area');
+    const fileInput = document.getElementById('file-input');
+    
+    if (fileUploadArea && fileInput) {
+      fileUploadArea.addEventListener('click', () => {
+        if (isAdminMode) {
+          fileInput.click();
+        } else {
+          showAdminPrompt();
+        }
+      });
+      
+      fileInput.addEventListener('change', (e) => {
+        if (isAdminMode) {
+          handleFileUpload(e.target.files);
+        }
+      });
+      
+      // Drag and drop
+      fileUploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (isAdminMode) {
+          fileUploadArea.classList.add('dragover');
+        }
+      });
+      
+      fileUploadArea.addEventListener('dragleave', () => {
+        fileUploadArea.classList.remove('dragover');
+      });
+      
+      fileUploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        fileUploadArea.classList.remove('dragover');
+        if (isAdminMode) {
+          handleFileUpload(e.dataTransfer.files);
+        } else {
+          showAdminPrompt();
+        }
+      });
     }
     
     // Add a small delay to ensure DOM is fully ready
