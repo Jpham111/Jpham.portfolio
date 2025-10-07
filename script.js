@@ -5,6 +5,8 @@ let isAdminMode = false;
 const adminPassword = 'admin123';
 
 function showAdminPasswordPrompt() {
+  console.log('showAdminPasswordPrompt called');
+  alert('Password prompt function called!'); // Test alert
   const prompt = document.createElement('div');
   prompt.className = 'password-prompt';
   prompt.innerHTML = `
@@ -298,13 +300,15 @@ document.addEventListener('DOMContentLoaded', () => {
           const progress = (currentTime - sunrise) / dayDuration;
           const x = progress * window.innerWidth;
           const arcProgress = progress * Math.PI;
-          const y = window.innerHeight * 0.7 - (Math.sin(arcProgress) * window.innerHeight * 0.5);
+          // Adjust to create a higher arc that goes over the hero content
+          const y = window.innerHeight * 0.3 - (Math.sin(arcProgress) * window.innerHeight * 0.25);
           
           sun.style.left = x + 'px';
           sun.style.top = y + 'px';
           dayProgressEl.textContent = Math.round(progress * 100) + '%';
           
-          const scale = 0.8 + (Math.sin(progress * Math.PI) * 0.4);
+          // Smaller scale to avoid interfering with text
+          const scale = 0.6 + (Math.sin(progress * Math.PI) * 0.2);
           sun.style.transform = `translate(-50%, -50%) scale(${scale})`;
       } else {
           // Show moon, hide sun
@@ -329,13 +333,15 @@ document.addEventListener('DOMContentLoaded', () => {
           x = progress * window.innerWidth;
           
           const arcProgress = progress * Math.PI;
-          y = window.innerHeight * 0.7 - (Math.sin(arcProgress) * window.innerHeight * 0.5);
+          // Adjust to create a higher arc that goes over the hero content
+          y = window.innerHeight * 0.3 - (Math.sin(arcProgress) * window.innerHeight * 0.25);
           
           moon.style.left = x + 'px';
           moon.style.top = y + 'px';
           nightProgressEl.textContent = Math.round(progress * 100) + '%';
           
-          const scale = 0.8 + (Math.sin(progress * Math.PI) * 0.3);
+          // Smaller scale to avoid interfering with text
+          const scale = 0.6 + (Math.sin(progress * Math.PI) * 0.2);
           moon.style.transform = `translate(-50%, -50%) scale(${scale})`;
       }
   }
@@ -557,6 +563,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const adminToggle = document.getElementById('admin-toggle');
     if (adminToggle) {
       console.log('Found admin toggle button, setting up direct functionality');
+      console.log('Button element:', adminToggle);
+      console.log('Button style:', window.getComputedStyle(adminToggle));
+      
+      // Add a test button to see if the issue is with this specific button
+      const testButton = document.createElement('button');
+      testButton.textContent = 'TEST';
+      testButton.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        z-index: 1000;
+        background: red;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+      `;
+      testButton.addEventListener('click', () => {
+        alert('Test button works!');
+        showAdminPasswordPrompt();
+      });
+      document.body.appendChild(testButton);
       
       // Remove any existing event listeners
       const newAdminToggle = adminToggle.cloneNode(true);
@@ -567,6 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Admin button clicked - showing password prompt');
         e.preventDefault();
         e.stopPropagation();
+        alert('Admin button clicked!'); // Test alert
         if (isAdminMode) {
           // Exit admin mode
           isAdminMode = false;
@@ -582,6 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log('Admin mode deactivated');
         } else {
           // Enter admin mode
+          console.log('Calling showAdminPasswordPrompt');
           showAdminPasswordPrompt();
         }
       });
@@ -827,21 +857,9 @@ class MusicPlayer {
   }
 
   setupAdminPanel() {
-    // Admin toggle button
-    console.log('Setting up admin panel, adminToggle element:', this.adminToggle);
-    
-    if (!this.adminToggle) {
-      console.error('Admin toggle button not found!');
-      return;
-    }
-    
-    this.adminToggle.addEventListener('click', (e) => {
-      console.log('Admin toggle clicked', e);
-      e.preventDefault();
-      e.stopPropagation();
-      alert('Button clicked!'); // Temporary test
-      this.toggleAdminPanel();
-    });
+    // Admin toggle button - skip setup since it's handled globally
+    console.log('Skipping admin panel setup - handled globally');
+    return;
 
     // Admin buttons
     this.savePlaylistBtn.addEventListener('click', async () => {
