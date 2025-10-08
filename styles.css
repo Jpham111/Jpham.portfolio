@@ -272,6 +272,15 @@ body.night-mode .project-card {
 
 /* Radio Page Preview Styles */
 
+/* Radio page navigation - right aligned */
+.radio-page .nav-container {
+  justify-content: flex-end;
+}
+
+.radio-page .nav-links {
+  margin-left: auto;
+}
+
 .preview-container {
   background: #fff;
   border-radius: 16px;
