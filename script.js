@@ -866,8 +866,8 @@ class MusicPlayer {
 
     this.clearPlaylistBtn.addEventListener('click', async () => {
       if (confirm('Are you sure you want to clear all songs from the playlist?')) {
-        this.songs = [];
-        this.renderPlaylist();
+      this.songs = [];
+      this.renderPlaylist();
         await this.savePlaylistToStorage();
         console.log('Playlist cleared');
       }
@@ -1025,7 +1025,7 @@ class MusicPlayer {
       this.songs = songs;
       console.log('Loaded playlist from IndexedDB:', this.songs.length, 'songs');
       console.log('Songs loaded:', this.songs.map(song => ({ title: song.title, isUploaded: song.isUploaded })));
-    } catch (e) {
+      } catch (e) {
       console.error('Error loading playlist from IndexedDB:', e);
       this.songs = [];
     }
