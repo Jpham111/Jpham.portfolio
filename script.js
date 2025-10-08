@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const x = progress * window.innerWidth;
           const arcProgress = progress * Math.PI;
           // Adjust to create a higher arc that goes over the hero content
-          const y = window.innerHeight * 0.3 - (Math.sin(arcProgress) * window.innerHeight * 0.25);
+          const y = window.innerHeight * 0.2 - (Math.sin(arcProgress) * window.innerHeight * 0.15);
           
           sun.style.left = x + 'px';
           sun.style.top = y + 'px';
