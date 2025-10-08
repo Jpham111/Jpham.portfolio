@@ -365,9 +365,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const originalText = 'JAY PHAM';
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:,.<>?';
     
-    // Simple test - change text immediately
-    scrambleTitle.textContent = 'JAY PHAM';
-    
     const scramble = () => {
       let iterations = 0;
       const maxIterations = 30;
@@ -392,12 +389,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
       
-      // Start after 1 second
-      setTimeout(animate, 1000);
+      // Start animation immediately
+      animate();
     };
     
-    // Start scramble after 2 seconds
-    setTimeout(scramble, 2000);
+    // Start scramble after 1 second
+    setTimeout(scramble, 1000);
   } else {
     console.log('ERROR: Scramble title element not found');
   }
