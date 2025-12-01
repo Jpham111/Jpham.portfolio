@@ -229,22 +229,73 @@ function handleFileUpload(files) {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('External script.js DOMContentLoaded fired');
   
-  // Preloader
+  // Preloader with Dynamic Greeting
   let percentage = 0;
-  const percentageElement = document.querySelector('.loader-percentage');
   const preloader = document.querySelector('.preloader');
   const progressBar = document.querySelector('.loader-progress');
+  const loaderGreetingText = document.getElementById('loader-greeting-text');
+  
+  const greetings = [
+    { text: "Hello", language: "English", color: "#ffb23e" }, // Orange (accent)
+    { text: "こんにちは", language: "Japanese", color: "#2c6bed" }, // Blue
+    { text: "Bonjour", language: "French", color: "#8b5cf6" }, // Purple
+    { text: "Hola", language: "Spanish", color: "#10b981" }, // Green
+    { text: "안녕하세요", language: "Korean", color: "#f59e0b" }, // Amber
+    { text: "Ciao", language: "Italian", color: "#ef4444" }, // Red
+    { text: "Hallo", language: "German", color: "#06b6d4" }, // Cyan
+  ];
+  
+  let greetingIndex = 0;
+  let isPreloaderActive = true;
+
+  // Update greeting during preloader
+  const updateLoaderGreeting = () => {
+    if (!isPreloaderActive || !loaderGreetingText) return;
+    
+    // Smooth exit animation
+    loaderGreetingText.style.transition = 'opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease-out';
+    loaderGreetingText.style.opacity = '0';
+    loaderGreetingText.style.transform = 'translateY(-10px)';
+    
+    setTimeout(() => {
+      // Update text and color
+      greetingIndex = (greetingIndex + 1) % greetings.length;
+      const currentGreeting = greetings[greetingIndex];
+      loaderGreetingText.textContent = currentGreeting.text;
+      loaderGreetingText.style.color = currentGreeting.color;
+      
+      // Smooth enter animation
+      loaderGreetingText.style.transition = 'opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease-out';
+      loaderGreetingText.style.opacity = '1';
+      loaderGreetingText.style.transform = 'translateY(0)';
+      
+      // Continue to next greeting
+      if (isPreloaderActive) {
+        setTimeout(updateLoaderGreeting, 400);
+      }
+    }, 300);
+  };
+  
+  // Set initial color for preloader greeting
+  if (loaderGreetingText && greetings.length > 0) {
+    loaderGreetingText.style.color = greetings[0].color;
+  }
+
+  // Start greeting animation
+  if (loaderGreetingText) {
+    setTimeout(updateLoaderGreeting, 500);
+  }
 
   const loadInterval = setInterval(() => {
       percentage += Math.random() * 15;
       if (percentage >= 100) {
           percentage = 100;
           clearInterval(loadInterval);
+          isPreloaderActive = false;
           setTimeout(() => {
               preloader.classList.add('fade-out');
           }, 500);
       }
-      percentageElement.textContent = Math.floor(percentage) + '%';
       progressBar.style.width = percentage + '%';
   }, 100);
   
@@ -456,6 +507,60 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start immediately and then every 15 seconds
     scrambleDateTime();
     setTimeout(updateDateTime, 15000);
+  }
+
+  // Dynamic Greetings Effect
+  const greetingElement = document.getElementById('dynamic-greeting');
+  const greetingText = document.getElementById('greeting-text');
+  
+  if (greetingElement && greetingText && (window.location.pathname.includes('index.html') || window.location.pathname === '/')) {
+    console.log('Starting dynamic greetings effect');
+    
+    const greetings = [
+      { text: "Hello", language: "English", color: "#ffb23e" }, // Orange (accent)
+      { text: "こんにちは", language: "Japanese", color: "#2c6bed" }, // Blue
+      { text: "Bonjour", language: "French", color: "#8b5cf6" }, // Purple
+      { text: "Hola", language: "Spanish", color: "#10b981" }, // Green
+      { text: "안녕하세요", language: "Korean", color: "#f59e0b" }, // Amber
+      { text: "Ciao", language: "Italian", color: "#ef4444" }, // Red
+      { text: "Hallo", language: "German", color: "#06b6d4" }, // Cyan
+    ];
+    
+    let currentIndex = 0;
+    let isAnimating = true;
+    
+    // Set initial color
+    if (greetings.length > 0) {
+      greetingText.style.color = greetings[0].color;
+    }
+    
+    const updateGreeting = () => {
+      if (!isAnimating) return;
+      
+      // Smooth exit animation
+      greetingText.style.transition = 'opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease-out';
+      greetingText.style.opacity = '0';
+      greetingText.style.transform = 'translateY(-10px)';
+      
+      setTimeout(() => {
+        // Update text and color
+        currentIndex = (currentIndex + 1) % greetings.length;
+        const currentGreeting = greetings[currentIndex];
+        greetingText.textContent = currentGreeting.text;
+        greetingText.style.color = currentGreeting.color;
+        
+        // Smooth enter animation
+        greetingText.style.transition = 'opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease-out';
+        greetingText.style.opacity = '1';
+        greetingText.style.transform = 'translateY(0)';
+        
+        // Continue to next greeting after a delay
+        setTimeout(updateGreeting, 400);
+      }, 300);
+    };
+    
+    // Start the animation after a short delay
+    setTimeout(updateGreeting, 500);
   }
 
   // Smooth scroll for internal links

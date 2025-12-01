@@ -30,12 +30,31 @@
   text-align: center;
 }
 
-.loader-percentage {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--text);
+.loader-greeting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
   margin-bottom: 20px;
-  font-family: 'Courier New', monospace;
+  position: relative;
+  overflow: visible;
+}
+
+.loader-greeting .greeting-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 240px;
+  height: 64px;
+}
+
+.loader-greeting .greeting-text {
+  font-size: 24px;
+  font-weight: 500;
+  transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease-out;
+  display: inline-block;
+  will-change: opacity, transform, color;
 }
 
 .loader-bar {
@@ -61,10 +80,30 @@ body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   background: linear-gradient(135deg, #f7f7f7 0%, #f0f0f0 100%);
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.03) 1px, transparent 0);
+  background-size: 40px 40px;
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+    linear-gradient(0deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+  background-size: 200px 200px, 200px 200px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
 }
 
 img { max-width: 100%; display: block; }
@@ -73,7 +112,7 @@ a { color: inherit; text-decoration: none; }
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .container.narrow { max-width: 820px; }
 
-.site-header.minimal { position: fixed; top: 0; right: 0; left: 0; background: transparent; border: none; }
+.site-header.minimal { position: fixed; top: 0; right: 0; left: 0; background: transparent; border: none; z-index: 10; }
 .nav.right-nav { height: 64px; display: flex; align-items: center; justify-content: flex-end; }
 .nav .nav-links { display: flex; gap: 20px; align-items: center; padding-right: 24px; }
 .nav .nav-item { display: inline-flex; gap: 8px; align-items: center; color: var(--muted); font-size: 14px; }
@@ -81,12 +120,53 @@ a { color: inherit; text-decoration: none; }
 
 .section { padding: 96px 0; }
 
-.minimal-hero { height: 100vh; display: grid; place-items: center; text-align: center; }
+.minimal-hero { 
+  height: 100vh; 
+  display: grid; 
+  place-items: center; 
+  text-align: center; 
+  position: relative;
+  z-index: 1;
+}
 .minimal-hero .hero-title { font-weight: 700; letter-spacing: 0.06em; font-size: clamp(20px, 2.3vw, 28px); margin: 0 0 8px; color: #383838; }
 .minimal-hero .hero-subtitle { letter-spacing: 0.08em; color: var(--accent); font-weight: 700; font-size: clamp(12px, 1.3vw, 14px); margin: 0 0 16px; }
 .minimal-hero .hero-datetime { color: #fff; background: #000; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; letter-spacing: 0.05em; margin: 0 auto 16px; display: inline-block; font-family: 'Courier New', monospace; }
 .minimal-hero .hero-copy { color: var(--muted); max-width: 640px; margin: 0 auto; font-size: 16px; line-height: 1.7; }
 .minimal-hero .chevron { margin-top: 64px; color: #bdbdbd; }
+
+/* Dynamic Greeting Styles */
+.dynamic-greeting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  margin: 0 auto 16px;
+  position: relative;
+  overflow: visible;
+}
+
+.greeting-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 240px;
+  height: 64px;
+}
+
+.greeting-text {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+  transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease-out;
+  display: inline-block;
+  will-change: opacity, transform, color;
+}
+
+/* Dark mode support for greeting - colors will still work but may need adjustment */
+body.night-mode .greeting-text {
+  /* Colors are set dynamically via JavaScript, so this is a fallback */
+  opacity: 0.95;
+}
 
 /* Sun Tracker */
 .sun-tracker {
@@ -216,7 +296,17 @@ a { color: inherit; text-decoration: none; }
 /* Night mode background */
 body.night-mode {
     background: #1a1a2e;
-    transition: background 1s ease;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+    transition: background 1s ease, background-image 1s ease;
+}
+
+body.night-mode::before {
+  background: 
+    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%),
+    linear-gradient(0deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%);
+  opacity: 0.3;
 }
 
 body.night-mode .hero,
