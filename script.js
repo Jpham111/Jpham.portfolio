@@ -326,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentTimeMoonEl = document.getElementById('currentTimeMoon');
       const dayProgressEl = document.getElementById('dayProgress');
       const nightProgressEl = document.getElementById('nightProgress');
+      const heroTitle = document.getElementById('scramble-title');
       
       // Update time display
       const timeString = now.toLocaleTimeString('en-US', { 
@@ -339,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Check if it's day or night
       const isDay = currentTime >= sunrise && currentTime < sunset;
       
-      if (isDay) {
+      if (isDay && heroTitle) {
           // Show sun, hide moon
           sunTracker.style.opacity = '1';
           moonTracker.style.opacity = '0';
@@ -347,12 +348,24 @@ document.addEventListener('DOMContentLoaded', () => {
           moonInfo.style.opacity = '0';
           document.body.classList.remove('night-mode');
           
-          // Sun movement
+          // Get hero title position (relative to viewport)
+          const titleRect = heroTitle.getBoundingClientRect();
+          const titleCenterX = titleRect.left + titleRect.width / 2;
+          const titleTop = titleRect.top;
+          
+          // Sun movement - position above title with time-based horizontal movement
           const progress = (currentTime - sunrise) / dayDuration;
-          const x = progress * window.innerWidth;
+          
+          // Create a small arc above the title (sun moves left to right during the day)
+          // Horizontal position: centered on title, with slight movement based on time
+          const arcWidth = 200; // Width of the arc in pixels
+          const x = titleCenterX + (progress - 0.5) * arcWidth;
+          
+          // Vertical position: above title with 20-30px spacing, with slight arc
+          const spacing = 25; // 25px spacing between sun and title
+          const arcHeight = 30; // Height of the arc
           const arcProgress = progress * Math.PI;
-          // Adjust to create a higher arc that goes over the hero content
-          const y = window.innerHeight * 0.2 - (Math.sin(arcProgress) * window.innerHeight * 0.15);
+          const y = titleTop - spacing - (Math.sin(arcProgress) * arcHeight);
           
           sun.style.left = x + 'px';
           sun.style.top = y + 'px';

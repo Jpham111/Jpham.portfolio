@@ -181,11 +181,11 @@ body.night-mode .greeting-text {
 
 .sun-path {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 70%;
-    overflow: hidden;
+    height: 100%;
+    overflow: visible;
 }
 
 .sun {
@@ -196,6 +196,7 @@ body.night-mode .greeting-text {
     background: radial-gradient(circle, #ffd93d 0%, #f4a261 70%, #e76f51 100%);
     box-shadow: 0 0 40px rgba(255, 217, 61, 0.4);
     transition: all 0.3s ease;
+    transform: translate(-50%, -50%);
 }
 
 .sun-info {
