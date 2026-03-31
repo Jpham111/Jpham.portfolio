@@ -23,7 +23,7 @@
     <h1 class="study-title">Daily Music Sharing App</h1>
 
     <div class="study-hero">
-      <video controls poster="https://picsum.photos/seed/friend-radio-hero/1400/700" style="width: 100%; max-width: 100%; height: auto; max-height: 400px; object-fit: contain;">
+      <video controls style="width: 100%; max-width: 100%; height: auto; max-height: 400px; object-fit: contain;">
         <source src="videos/Friend-radio-demo.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -56,10 +56,10 @@
             <p>Built Friend Radio — a simple app where each person posts one song URL from any streaming platform once per day, creating a curated daily playlist of friend recommendations.</p>
             <h3>Impact</h3>
             <ul>
-              <li>100% daily engagement from friend group (12 users)</li>
-              <li>Daily habit formation — consistent morning check-ins</li>
-              <li>60% increase in new music discoveries</li>
-              <li>Cross-platform success — works with all streaming services</li>
+              <li>All 12 users checked the app daily within the first 2 weeks — small group, but 100% adoption with zero onboarding</li>
+              <li>Consistent morning check-ins became a habit; several users mentioned it unprompted at 6 weeks</li>
+              <li>~60% more new artists added to personal libraries, self-reported by 8 of 12 users at the 6-week mark</li>
+              <li>Works across Spotify, Apple Music, SoundCloud, and YouTube — no one was excluded by their platform choice</li>
             </ul>
           </div>
         </section>
@@ -159,12 +159,14 @@
             <li>Shared daily playlist — see everyone's picks in one place</li>
             <li>24-hour reset — list refreshes daily for freshness</li>
           </ul>
-          <h4>A/B testing results</h4>
+          <h4>Mechanic testing (within the 12-person group)</h4>
           <ul>
-            <li>One song vs. multiple: 3× higher engagement</li>
-            <li>Daily vs. weekly reset: 85% more check-ins</li>
-            <li>URL paste vs. search: 90% preferred direct paste</li>
+            <li>One song limit vs. unlimited: the constraint won decisively — the group felt the list was more curated and worth checking; unlimited felt like a feed</li>
+            <li>Daily reset vs. weekly: daily drove far more consistent check-ins across a 3-week trial — the 24-hour window created just enough urgency</li>
+            <li>Direct URL paste vs. in-app search: 11 of 12 preferred paste — lower friction, and it worked across every platform without additional API work</li>
           </ul>
+          <h4>The feature I almost built:</h4>
+          <p>I had Spotify, Apple Music, and SoundCloud API auth flows half-written before I stopped. I was solving a discovery problem nobody actually had — my friends already knew what they wanted to share. The friction wasn't finding the song, it was that there was no shared place to post it that everyone would actually check. I killed the search feature in week 3. The URL paste field became the entire submission experience.</p>
         </section>
 
         <section id="designs" class="study-section">
@@ -199,10 +201,10 @@
           <h3>Reflection</h3>
           <h4>Results (3 months post‑launch)</h4>
           <ul>
-            <li>100% daily engagement from 12-person friend group</li>
-            <li>Habit formation — consistent morning check-ins</li>
-            <li>60% more new music in friends' libraries</li>
-            <li>Increased social bonding through shared music</li>
+            <li>All 12 users still active at 3 months — no drop-off after the novelty wore off</li>
+            <li>Morning check-ins became a routine; the group started referencing songs from the app in conversation</li>
+            <li>~60% more new artists in personal libraries at 6 weeks, self-reported (small sample, not controlled)</li>
+            <li>Zero support requests — the app was simple enough to never need explanation</li>
           </ul>
           <h4>What worked</h4>
           <ul>

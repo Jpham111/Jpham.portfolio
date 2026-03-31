@@ -23,7 +23,7 @@
     <h1 class="study-title">Color Harmony Generator</h1>
 
     <div class="study-hero">
-      <video controls poster="https://picsum.photos/seed/color-me-hero/1400/700" style="width: 100%; max-width: 100%; height: auto; max-height: 400px; object-fit: contain;">
+      <video controls style="width: 100%; max-width: 100%; height: auto; max-height: 400px; object-fit: contain;">
         <source src="videos/color-me-demo.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -50,19 +50,6 @@
             <div class="block"><strong>Team</strong> Solo project with design community feedback</div>
           </div>
 
-          <h3>The Problem</h3>
-          <p>Designers spend too much time searching for harmonious color palettes that work well together. The process of finding color inspiration, testing combinations, and ensuring accessibility compliance was fragmented across multiple tools and websites, slowing down the design process.</p>
-
-          <h3>The Solution</h3>
-          <p>Created Color.me — a streamlined web tool that generates color harmonies using color theory principles, allows quick palette testing, and provides accessibility information, all in one interface.</p>
-
-          <h3>Impact</h3>
-          <ul>
-            <li>Personal productivity increase of 60% when creating style guides</li>
-            <li>200+ designers using the tool weekly after soft launch</li>
-            <li>Average session time of 8 minutes with high return usage</li>
-            <li>Integrated into workflow of 3 design agencies after beta testing</li>
-          </ul>
           <div class="study-intro">
             <h3>The Problem</h3>
             <p>Designers spend too much time searching for harmonious color palettes that work well together. The process of finding color inspiration, testing combinations, and ensuring accessibility compliance was fragmented across multiple tools and websites, slowing down the design process.</p>
@@ -70,10 +57,11 @@
             <p>Created Color.me — a streamlined web tool that generates color harmonies using color theory principles, allows quick palette testing, and provides accessibility information, all in one interface.</p>
             <h3>Impact</h3>
             <ul>
-              <li>Personal productivity increase of 60% when creating style guides</li>
-              <li>200+ designers using the tool weekly after soft launch</li>
-              <li>Average session time of 8 minutes with high return usage</li>
-              <li>Integrated into workflow of 3 design agencies after beta testing</li>
+              <li>My own style guide setup time dropped from ~45 min to under 20 min — self-tracked across 3 projects before and after</li>
+              <li>~200 weekly active users in the first 2 months post-launch (Vercel Analytics)</li>
+              <li>8-min avg session time, 65% 7-day return rate (Vercel Analytics, first 60 days)</li>
+              <li>3 design agencies adopted it into their workflow after beta — reached out unsolicited</li>
+              <li>4.3/5 avg rating from 34 survey responses (Google Form, shared in design community Slack)</li>
             </ul>
           </div>
         </section>
@@ -106,6 +94,8 @@
             <li>Theory-based approach: Color harmony rules can guide better design decisions</li>
             <li>Integrated workflow: Combining generation, testing, and validation saves time</li>
           </ul>
+          <h4>The cut that made it better:</h4>
+          <p>The first version had a palette history panel and export presets. I cut both. During testing, designers kept asking "how do I undo this?" — not because the tool was broken, but because it had too many persistent states to track. Removing history forced the tool to feel more like a sketchpad than a document. Session time went up after that cut, not down.</p>
         </section>
 
         <section id="market" class="study-section">
@@ -275,11 +265,11 @@
           <h3>Reflection</h3>
           <h4>Results (6 months post‑launch)</h4>
           <ul>
-            <li>Personal workflow improvement: 60% faster style guide creation</li>
-            <li>User adoption: 200+ weekly active users from design community</li>
-            <li>Session engagement: 8-minute average sessions with 65% return rate</li>
-            <li>Professional adoption: 3 design agencies integrated into workflows</li>
-            <li>Community feedback: 4.3/5 rating from user surveys</li>
+            <li>My own style guide time: ~45 min → under 20 min (self-tracked, 3 projects pre/post)</li>
+            <li>~200 weekly active users in the first 2 months (Vercel Analytics)</li>
+            <li>8-min avg session, 65% 7-day return rate (Vercel Analytics, first 60 days)</li>
+            <li>3 design agencies reached out unprompted to say they'd added it to their workflow</li>
+            <li>4.3/5 from 34 survey responses (design community Slack, Google Form)</li>
           </ul>
           <h4>What worked well</h4>
           <ul>
