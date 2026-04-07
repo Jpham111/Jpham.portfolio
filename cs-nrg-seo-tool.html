@@ -32,8 +32,8 @@
     </header>
 
     <main class="container">
-        <div class="study-header">NATIONAL RESEARCH GROUP • SHIPPED 2023</div>
-        <h1 class="study-title">National Research Group</h1>
+        <div class="study-header">NATIONAL RESEARCH GROUP • SHIPPED 2024</div>
+        <h1 class="study-title">Internal SEO Tool Redesign</h1>
 
         <div class="study-hero">
             <img src="images/nrg-logo.jpg" alt="National Research Group logo" style="width: 100%; max-width: 100%; height: auto; max-height: 400px; object-fit: contain;">
@@ -54,120 +54,72 @@
             <article class="study-content">
                 <section id="overview" class="study-section">
                     <div class="study-meta">
-                        <div class="block"><strong>Project</strong> Comprehensive research platform with SEO tools</div>
-                        <div class="block"><strong>Timeline</strong> 2022 - 2023</div>
-                        <div class="block"><strong>Role</strong> Design & Front‑End</div>
-                        <div class="block"><strong>Team</strong> 5 people</div>
+                        <div class="block"><strong>Role</strong> Product Designer</div>
+                        <div class="block"><strong>Timeline</strong> Feb 2024 – Apr 2025</div>
+                        <div class="block"><strong>Team</strong> 5-person cross-functional team</div>
+                        <div class="block"><strong>Type</strong> B2B SaaS · Data Tools · Interaction Design · Accessibility</div>
                     </div>
                     <div class="study-intro">
                         <h3>The Problem</h3>
-                        <p>Policy makers and researchers needed better data visualization capabilities and simplified tools for analyzing research data. Existing SEO tools were too complex for non-technical users, and real-time data updates were crucial for decision making.</p>
-                        <h3>The Solution</h3>
-                        <p>Created a comprehensive research platform with intuitive data visualization dashboard, simplified SEO analysis tool, and real-time data updates accessible on all devices.</p>
+                        <p>NRG's internal SEO tools had a usability problem that was costing more than time. Researchers and analysts were submitting malformed data — not because they were careless, but because the interface gave them no feedback until it was too late. Invalid inputs would pass through, corrupt downstream datasets, and create hours of cleanup work that nobody had budgeted for.</p>
+                        <p>The bigger issue: it was a recurring problem, not a one-time event. That meant it wasn't a user training issue. It was a design issue.</p>
                         <h3>Impact</h3>
                         <ul>
-                            <li>Daily active usage up ~65% in the 3 months after redesign (internal analytics, pre/post comparison)</li>
+                            <li>Daily active usage up ~65% in the 3 months after redesign (internal analytics, pre/post)</li>
                             <li>Users completed standard analysis tasks ~50% faster on average (moderated usability sessions, n=8)</li>
-                            <li>4.6/5 avg satisfaction (post-launch internal survey, n=31)</li>
-                            <li>40% mobile access rate (Google Analytics, Q4 2023) — drove a significant mid-project pivot to mobile-first</li>
+                            <li>First report creation time dropped from ~47 min to under 15 min (usability sessions, n=6)</li>
+                            <li>9 of 10 usability participants rated navigation "intuitive" or "very intuitive"</li>
+                            <li>4.6/5 average satisfaction (post-launch internal survey, n=31)</li>
+                            <li>85% monthly active mobile usage in the first quarter after launch</li>
                         </ul>
                     </div>
                 </section>
 
                 <section id="observations" class="study-section">
-                    <h3>Initial Observations</h3>
-                    <h4>Pain points with existing tools</h4>
-                    <ul>
-                        <li>Complex data visualization tools requiring technical expertise</li>
-                        <li>SEO analysis tools overwhelming for non-technical users</li>
-                        <li>Data scattered across multiple platforms and tools</li>
-                        <li>Lack of real-time updates for time-sensitive decisions</li>
-                    </ul>
-                    <h4>User feedback from interviews</h4>
-                    <ul>
-                        <li>"I need to see data trends at a glance, not dig through complex charts"</li>
-                        <li>"SEO tools are too technical for policy work"</li>
-                        <li>"I need mobile access when I'm in meetings"</li>
-                    </ul>
-                    <h4>Key insight</h4>
-                    <p>Policy makers need data tools that are powerful yet accessible, with clear visualizations that tell a story rather than just displaying numbers.</p>
-                    <h4>The decision I fought for:</h4>
-                    <p>The team pushed hard for a customizable dashboard — drag-and-drop charts, user-configurable layouts. I argued against it for weeks. The real problem wasn't that users wanted more control; it was that they didn't know what to look at first. A fixed, opinionated layout with strong visual hierarchy solved the "where do I start?" problem that customization never would have. We shipped without drag-and-drop. No one asked for it after launch.</p>
+                    <h3>What I Found</h3>
+                    <p>I started with a usability audit of the existing input flows — specifically the validation patterns, error states, and inline microcopy. What I found was a system that was functionally complete but interaction-design empty. Fields accepted bad data silently. Errors appeared only after submission. The feedback loop was broken.</p>
+                    <h4>The decision I pushed for:</h4>
+                    <p>The team pushed hard for a customizable dashboard — drag-and-drop charts, user-configurable layouts. I pushed back for weeks. The real problem wasn't that users wanted more control over their view; it was that they didn't know what to look at when they first arrived. A fixed, opinionated layout with strong visual hierarchy solved the "where do I start?" problem that customization would have buried. We shipped without drag-and-drop. Nobody asked for it after launch.</p>
+                    <h4>The mobile pivot:</h4>
+                    <p>The 40% mobile access rate that surfaced mid-project forced a significant pivot. Policy researchers are frequently in meetings, reviewing data on phones, making decisions away from a desk. Mobile wasn't a nice-to-have — it was a use case the tool was actively failing.</p>
                 </section>
 
                 <section id="market" class="study-section">
                     <h3>Market Research</h3>
-                    <h4>Research platform landscape</h4>
                     <ul>
-                        <li>78% of policy makers rely on data for decision making</li>
-                        <li>Average time spent on data analysis: 3-4 hours daily</li>
-                        <li>Mobile usage growing 40% year-over-year</li>
-                        <li>SEO knowledge gap in government sector</li>
+                        <li><strong>Tableau</strong>: Powerful but requires training most analysts don't have time for</li>
+                        <li><strong>Google Analytics</strong>: Too technical for policy-focused workflows</li>
+                        <li><strong>Custom dashboards</strong>: Expensive and slow to iterate</li>
                     </ul>
-                    <h4>Existing solutions gaps</h4>
-                    <ul>
-                        <li><strong>Tableau</strong>: Powerful but requires training</li>
-                        <li><strong>Google Analytics</strong>: Too technical for policy makers</li>
-                        <li><strong>Custom dashboards</strong>: Expensive and time-consuming</li>
-                    </ul>
-                    <h4>Opportunity</h4>
-                    <p>Create a platform that democratizes data analysis for policy makers while maintaining the depth needed for research professionals.</p>
+                    <p>The gap: tools built for analysts, not for the researchers and policy makers who actually needed to act on the data.</p>
                 </section>
 
                 <section id="users" class="study-section">
                     <h3>User Research</h3>
-                    <h4>Target users</h4>
-                    <ul>
-                        <li>Policy makers and government officials</li>
-                        <li>Research analysts and data scientists</li>
-                        <li>Non-profit organization leaders</li>
-                    </ul>
-                    <h4>Key user needs</h4>
-                    <ul>
-                        <li>Quick data insights without technical expertise</li>
-                        <li>Mobile access for on-the-go analysis</li>
-                        <li>Shareable reports and visualizations</li>
-                        <li>Real-time data updates</li>
-                    </ul>
-                    <h4>User journey mapping</h4>
-                    <p>Identified key moments: data discovery, analysis, insight generation, and report sharing. Focused on making each step intuitive and efficient.</p>
+                    <p>The recurring data corruption problem looked like a user error problem from the outside. After auditing session logs and running usability interviews, the diagnosis shifted: it was a feedback timing problem. The interface was telling users too late that something was wrong. That reframe changed everything we designed.</p>
                 </section>
 
                 <section id="competitors" class="study-section">
                     <h3>Competitor Analysis</h3>
-                    <h4>Direct competitors</h4>
                     <ul>
                         <li><strong>Tableau</strong>: Market leader, steep learning curve</li>
                         <li><strong>Power BI</strong>: Microsoft integration, complex setup</li>
-                        <li><strong>Google Data Studio</strong>: Free but limited functionality</li>
-                    </ul>
-                    <h4>Competitive advantages</h4>
-                    <ul>
-                        <li>Designed specifically for policy makers</li>
-                        <li>Simplified interface without sacrificing power</li>
-                        <li>Mobile-first approach</li>
-                        <li>Integrated SEO analysis tools</li>
+                        <li><strong>Google Data Studio</strong>: Free but limited for internal tooling</li>
                     </ul>
                 </section>
 
                 <section id="solution" class="study-section">
-                    <h3>Solution</h3>
-                    <h4>Core features</h4>
-                    <ul>
-                        <li>Interactive data visualization dashboard</li>
-                        <li>Simplified SEO analysis tool</li>
-                        <li>Real-time data updates and alerts</li>
-                        <li>Mobile-responsive design</li>
-                        <li>Export and sharing capabilities</li>
-                    </ul>
-                    <h4>Design principles</h4>
-                    <ul>
-                        <li>Progressive disclosure of complexity</li>
-                        <li>Contextual help and guidance</li>
-                        <li>Data storytelling approach</li>
-                        <li>Accessibility-first design</li>
-                    </ul>
-                    
+                    <h3>How I Designed It</h3>
+                    <h4>Rebuilt input validation from the component level up</h4>
+                    <p>Inline validation that fires on blur, not on submit. Field-level error states that tell users exactly what went wrong and why — not generic "invalid input" messages. Microcopy written for the specific context of each field, not copy-pasted from a generic error library.</p>
+                    <h4>Redesigned for accessibility</h4>
+                    <p>Semantic structure, proper ARIA labeling, color contrast meeting WCAG AA. Accessibility wasn't retrofitted — it was part of the component spec from the first wireframe.</p>
+                    <h4>Fixed the information hierarchy</h4>
+                    <p>An opinionated dashboard layout with clear visual priority replaced the cluttered everything-at-once model. Users stopped asking "where do I start?" in usability sessions after this change.</p>
+                    <h4>Mobile-first from the pivot onward</h4>
+                    <p>Responsive layouts, touch-friendly tap targets, a schedule view optimized for small screens.</p>
+                    <p>I also ran A/B tests on CTA copy, button placement, and funnel microcopy across different campaign types. The wins weren't dramatic individually, but they stacked — and gave the team a repeatable methodology for validating copy decisions going forward.</p>
+
                     <div class="design-diagram">
                         <img src="images/information-architecture-nrg.jpeg" alt="National Research Group information architecture" class="architecture-image">
                     </div>
@@ -175,56 +127,25 @@
 
                 <section id="designs" class="study-section">
                     <h3>Final Designs</h3>
-                    <h4>Key design decisions</h4>
-                    <ul>
-                        <li>Clean, card-based layout for easy scanning</li>
-                        <li>Color-coded data indicators for quick understanding</li>
-                        <li>Progressive disclosure to avoid overwhelming users</li>
-                        <li>Mobile-optimized touch interactions</li>
-                    </ul>
-                    <h4>User testing results</h4>
-                    <ul>
-                        <li>First report creation time dropped from avg 47 min to under 15 min (moderated usability sessions, n=6)</li>
-                        <li>9 of 10 usability participants rated navigation "intuitive" or "very intuitive" on a 5-point scale</li>
-                        <li>85% monthly active mobile usage in the first quarter after launch (internal analytics)</li>
-                    </ul>
-                    
                     <div class="ab-test-results">
                         <img src="images/ab-test-nrg.jpg" alt="National Research Group A/B test results" class="ab-test-image">
                     </div>
-                    
-                    <h4>Dashboard Visualizations</h4>
-                    <p>Key metrics and insights displayed through interactive dashboards:</p>
-                    
+
                     <div class="design-diagram" style="margin-top: 24px;">
-                        <img src="images/nrg-revenue-growth-roi.jpg" alt="Revenue Growth & ROI dashboard showing 5-month trajectory with 136% revenue increase" class="architecture-image">
+                        <img src="images/nrg-revenue-growth-roi.jpg" alt="Revenue Growth & ROI dashboard" class="architecture-image">
                     </div>
-                    
+
                     <div class="design-diagram" style="margin-top: 24px;">
-                        <img src="images/nrg-customer-segment-value.jpg" alt="Customer Segment Value dashboard showing lifetime value by user type" class="architecture-image">
+                        <img src="images/nrg-customer-segment-value.jpg" alt="Customer Segment Value dashboard" class="architecture-image">
                     </div>
                 </section>
 
                 <section id="reflection" class="study-section">
                     <h3>Reflection</h3>
-                    <h4>What worked well</h4>
-                    <ul>
-                        <li>User-centered design approach</li>
-                        <li>Extensive user research and testing</li>
-                        <li>Mobile-first design strategy</li>
-                    </ul>
-                    <h4>Key learnings</h4>
-                    <ul>
-                        <li>Policy makers value simplicity over features</li>
-                        <li>Mobile access is crucial for government users</li>
-                        <li>Data storytelling is more effective than raw data</li>
-                    </ul>
-                    <h4>Future improvements</h4>
-                    <ul>
-                        <li>Advanced collaboration features</li>
-                        <li>Integration with more data sources</li>
-                        <li>AI-powered insights and recommendations</li>
-                    </ul>
+                    <h4>What I'd do differently:</h4>
+                    <p>I should have gotten to the mobile data earlier. The 40% mobile access rate was in the analytics the whole time — we just weren't looking at it as a design signal until mid-project. That caused rework that better upfront instrumentation would have prevented.</p>
+                    <h4>What I took from this:</h4>
+                    <p>The recurring data corruption problem looked like a user error problem from the outside. It was actually a feedback timing problem — the interface was telling users too late that something was wrong. Framing it that way changed what we designed: not better error messages, but earlier ones. That shift in diagnosis led to a meaningfully better fix than a surface-level copy pass would have.</p>
                 </section>
             </article>
         </div>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+    <meta name="theme-color" content="#000000">
+    <title>Exponent — Jay Pham</title>
+    <meta name="description" content="Exponent case study — User research for a pre-launch wearable AI product">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header minimal">
+        <nav class="nav right-nav">
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="currentColor"/></svg>
+                    <span>Home</span>
+                </a>
+                <a href="about.html" class="nav-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5.5A.5.5 0 0 0 3.5 20h17a.5.5 0 0 0 .5-.5C21 16.5 17 14 12 14Z" fill="currentColor"/></svg>
+                    <span>About</span>
+                </a>
+                <a href="radio.html" class="nav-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/></svg>
+                    <span>Radio</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="study-header">EXPONENT • UX RESEARCH → PRODUCT DESIGN 2023–2024</div>
+        <h1 class="study-title">Research-Driven Design System Overhaul</h1>
+
+        <div class="study-layout">
+            <aside class="study-sidebar">
+                <a class="active" href="#overview">Overview</a>
+                <a href="#context">The Problem</a>
+                <a href="#setup">Research Process</a>
+                <a href="#sessions">The Design Response</a>
+                <a href="#synthesis">Pipeline Work</a>
+                <a href="#impact">Results</a>
+                <a href="#reflection">Reflection</a>
+            </aside>
+
+            <article class="study-content">
+
+                <section id="overview" class="study-section">
+                    <div class="study-meta">
+                        <div class="block"><strong>Role</strong> UX Research Intern → Product Designer (Contract)</div>
+                        <div class="block"><strong>Timeline</strong> January 2023 – February 2024</div>
+                        <div class="block"><strong>Team</strong> Research, Design, Engineering</div>
+                        <div class="block"><strong>Type</strong> UX Research · Interaction Design · Design Systems</div>
+                    </div>
+                    <div class="study-intro">
+                        <p class="study-note"><em>Product details are under NDA. Specific screens available on request.</em></p>
+                        <h3>The Problem</h3>
+                        <p>I came into Exponent running usability sessions for a pre-launch wearable with an AI-driven interface. The assumption going in was that users were struggling with feature comprehension — too much to learn, too many things to figure out.</p>
+                        <p>That's not what I found.</p>
+                        <p>The sessions kept surfacing a different pattern: users weren't confused by the features. They felt overwhelmed by the interface's <em>behavior</em>. AI-driven UI elements were updating dynamically, surfacing proactively, and competing for attention simultaneously. Users described feeling like the product was doing too much at once — like they weren't in control of something that was making decisions on their behalf.</p>
+                        <p>That's a fundamentally different diagnosis. And it required a fundamentally different fix.</p>
+                        <h3>Results</h3>
+                        <ul>
+                            <li>Post-overhaul usability sessions no longer surfaced cognitive overwhelm as a primary complaint — the core problem the design system was built to solve was resolved</li>
+                            <li>Research findings shaped information architecture and design system structure directly, not as a deck that got filed and forgotten</li>
+                            <li>Faster research-to-design pipeline enabled insight-to-iteration cycles that fit within sprint cadence</li>
+                            <li>Progressed from research intern to contract product designer based on scope of contribution</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="context" class="study-section">
+                    <h3>The Problem</h3>
+                    <p>AI-driven UI elements were updating dynamically, surfacing proactively, and competing for attention simultaneously. Users described feeling like the product was doing too much at once — like they weren't in control of something that was making decisions on their behalf.</p>
+                    <p>The language participants used was consistent across sessions: <em>overwhelmed</em>, <em>distracted</em>, <em>like the product is doing too much</em>. "Users feel overwhelmed" is a sentiment. It's not a design input. My job was to translate it into one.</p>
+                    <p>I mapped findings to specific UI moments and interaction patterns — which elements, at which interaction points, were generating the perception of lost control — and brought those to the design and engineering teams as concrete inputs for the system redesign.</p>
+                </section>
+
+                <section id="setup" class="study-section">
+                    <h3>Research Process</h3>
+                    <h4>Facilitating structured usability sessions</h4>
+                    <p>I ran clean sessions across multiple participant cohorts. My job was to surface what was actually happening — not confirm the team's existing assumptions about what the problem was. That required discipline: letting participants struggle without intervening, and capturing behavioral observations with timestamps anchored to specific task moments rather than loose impressions.</p>
+                    <h4>Auditing the data before building on it</h4>
+                    <p>Before findings could drive decisions, I audited the session logs and participant records. There were inconsistencies that would have introduced noise into any analysis built on top of them. I treated this as a design problem: bad inputs produce bad outputs, regardless of how good the synthesis is. I cleaned the data, flagged the gaps, and made the findings trustworthy before passing them forward.</p>
+                    <h4>Synthesis to architecture</h4>
+                    <p>I synthesized findings using affinity mapping — clustering behavioral observations, direct quotes, and survey responses by theme rather than by participant. This revealed patterns that cut across individual sessions and made the severity of each issue visible as a pattern, not an anecdote.</p>
+                    <p>Deliverables: annotated user flows marking specific failure moments and timestamps, pain-point maps with severity ratings, and prioritized reports structured so findings were scan-able in a 30-second design review and deep-readable when needed. The team started pulling specific quotes directly into Figma annotations.</p>
+                </section>
+
+                <section id="sessions" class="study-section">
+                    <h3>The Design Response</h3>
+                    <p>The findings directly informed a design system overhaul built around three principles:</p>
+                    <h4>Reduce simultaneous visual competition</h4>
+                    <p>AI-driven elements were de-prioritized when not directly relevant to the user's current context. The interface needed to earn attention, not demand it by default.</p>
+                    <h4>Restore perceived control</h4>
+                    <p>Interaction patterns were redesigned to give users legible affordances for when and how AI-driven behavior would activate. Proactive behaviors were made interruptible — users could see what was happening and stop it.</p>
+                    <h4>Systematize the solution, not just the screen</h4>
+                    <p>The changes were implemented at the component and token level — not patched per-screen, not fixed in the specific flows we happened to test. If the cognitive load reduction only applied to the screens we designed for, the problem would resurface in every new screen. A system-level fix means it holds.</p>
+                </section>
+
+                <section id="synthesis" class="study-section">
+                    <h3>Pipeline Work</h3>
+                    <p>Beyond the product itself, I identified friction in the research-to-design handoff. Studies were completing but findings were getting absorbed slowly — there was latency between when a session finished and when that insight became a design input.</p>
+                    <p>I partnered with research and engineering to streamline how data was collected, structured, and reported. The outcome was faster loops: teams could test design responses to research findings within the same sprint cycle instead of waiting for a synthesis document that arrived two weeks later.</p>
+                    <p>Impact from user research isn't automatic — it's earned by making findings usable. A pain-point map that lives in Notion gets read once. One that's embedded in the designer's FigJam board becomes part of how they think.</p>
+                </section>
+
+                <section id="impact" class="study-section">
+                    <h3>Results</h3>
+                    <ul>
+                        <li>Post-overhaul usability sessions no longer surfaced cognitive overwhelm as a primary complaint</li>
+                        <li>Pain-point maps adopted into the design team's FigJam workspace for sprint prioritization</li>
+                        <li>Research-to-design pipeline improvements enabled insight-to-iteration within sprint cadence</li>
+                        <li>Progressed from research intern to contract product designer based on scope of contribution</li>
+                    </ul>
+                </section>
+
+                <section id="reflection" class="study-section">
+                    <h3>Reflection</h3>
+                    <h4>What I took from this:</h4>
+                    <p>AI interfaces introduce a design problem that most UI patterns weren't built for: the interface isn't just responding to users, it's <em>anticipating</em> them. That changes the design language required. Restraint needs to be the default. Proactive behavior needs to be earned and legible — users have to be able to see it coming and feel like they could stop it.</p>
+                    <p>Building that into a system rather than solving it screen-by-screen was the only fix that would actually hold. It's the same instinct I bring to every design system problem: solve it at the component level or you'll keep solving it forever.</p>
+                </section>
+
+            </article>
+        </div>
+    </main>
+
+    <footer class="dark-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-cta">
+                    <h3>Contact</h3>
+                    <h2>Let's start creating together</h2>
+                    <a href="mailto:Jay.pham25@gmail.com" class="footer-cta-button">
+                        Let's talk
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>Navigation</h4>
+                        <a href="index.html">Home</a>
+                        <a href="index.html#work">Work</a>
+                        <a href="about.html">About</a>
+                        <a href="radio.html">Radio</a>
+                        <a href="mailto:Jay.pham25@gmail.com">Contact</a>
+                    </div>
+
+                    <div class="footer-social">
+                        <h4>Social</h4>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                            Twitter
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer">
+                            Dribbble
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                            Instagram
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

@@ -44,143 +44,79 @@
       <article class="study-content">
         <section id="overview" class="study-section">
           <div class="study-meta">
-            <div class="block"><strong>Project</strong> Friend Radio - daily music sharing app</div>
-            <div class="block"><strong>Timeline</strong> August – November 2024 (4 months)</div>
             <div class="block"><strong>Role</strong> Product Designer & Full-Stack Developer</div>
-            <div class="block"><strong>Tech Stack</strong> Figma, Supabase, Firestore, Vercel</div>
+            <div class="block"><strong>Timeline</strong> August – November 2024 (4 months)</div>
+            <div class="block"><strong>Stack</strong> Figma, Supabase, Firestore, Vercel</div>
+            <div class="block"><strong>Type</strong> Consumer · Solo Build · Constraint-Driven Design</div>
           </div>
           <div class="study-intro">
             <h3>The Problem</h3>
-            <p>My friends and I were stuck in music discovery fatigue — constantly listening to the same songs. Existing music discovery felt algorithmic and impersonal, lacking the human connection that makes recommendations meaningful.</p>
-            <h3>The Solution</h3>
-            <p>Built Friend Radio — a simple app where each person posts one song URL from any streaming platform once per day, creating a curated daily playlist of friend recommendations.</p>
+            <p>My friend group was stuck in music discovery fatigue. Spotify's algorithm had learned our taste so well it stopped surprising us. We'd recommend songs to each other in group chats and they'd get buried in three messages. No one was discovering anything new, and the recommendations from people whose taste I actually trusted were getting lost.</p>
+            <p>The problem wasn't a lack of music. It was a lack of a shared place to put it that everyone would actually check.</p>
             <h3>Impact</h3>
             <ul>
-              <li>All 12 users checked the app daily within the first 2 weeks — small group, but 100% adoption with zero onboarding</li>
-              <li>Consistent morning check-ins became a habit; several users mentioned it unprompted at 6 weeks</li>
+              <li>All 12 users checked the app daily within the first 2 weeks — zero onboarding, 100% adoption</li>
+              <li>Still active at 3 months — no drop-off after novelty wore off</li>
+              <li>Morning check-ins became a routine; the group started referencing app discoveries in conversation</li>
               <li>~60% more new artists added to personal libraries, self-reported by 8 of 12 users at the 6-week mark</li>
-              <li>Works across Spotify, Apple Music, SoundCloud, and YouTube — no one was excluded by their platform choice</li>
+              <li>Zero support requests — the app never needed explanation</li>
             </ul>
           </div>
         </section>
 
         <section id="observations" class="study-section">
-          <h3>Initial Observations</h3>
-          <h4>Music discovery problems we experienced</h4>
+          <h3>What Shaped the Design</h3>
+          <p>I observed how my friends actually shared music before I designed anything. The pattern was consistent: someone would hear something they wanted to share, open a group chat, paste a link, and add "listen to this." Then it'd get buried.</p>
+          <p>The behavior I wanted to preserve: one deliberate recommendation, from someone you trust, that feels worth checking. The behavior I wanted to eliminate: recommendations disappearing into feed noise.</p>
+          <p>From there, the constraints almost wrote themselves.</p>
           <ul>
-            <li>Listening to the same songs repeatedly</li>
-            <li>Spotify/Apple algorithms felt repetitive and disconnected</li>
-            <li>Great friend recommendations were forgotten</li>
-            <li>No simple way to share daily music discoveries</li>
+            <li><strong>One song per day.</strong> Forces curation. Nobody shares throwaway picks when they only get one slot. In testing within the group, unlimited sharing immediately made the list feel like a feed — something to scroll past, not something to check.</li>
+            <li><strong>24-hour reset.</strong> Creates just enough urgency to build a daily habit without feeling like homework. Weekly reset didn't drive the same consistency in a 3-week trial.</li>
+            <li><strong>Platform agnostic.</strong> Spotify, Apple Music, SoundCloud, YouTube — paste any URL.</li>
           </ul>
-          <h4>Friend feedback</h4>
-          <ul>
-            <li>"I'm bored of my music but don't know where to find new stuff"</li>
-            <li>"I trust my friends' taste more than algorithms"</li>
-            <li>"When friends recommend songs, I forget to listen later"</li>
-          </ul>
-          <h4>Key insight</h4>
-          <p>The best music discoveries come from trusted friends, but there was no simple way to share and consume daily recommendations within our close group.</p>
         </section>
 
         <section id="market" class="study-section">
           <h3>Market Research</h3>
-          <h4>Music discovery landscape</h4>
+          <h4>Existing solutions gaps:</h4>
           <ul>
-            <li>73% of users rely on friends over algorithms for recommendations</li>
-            <li>Music consumed daily by 92% of young adults</li>
-            <li>Friends use different platforms (Spotify, Apple, SoundCloud, YouTube)</li>
+            <li><strong>Social media</strong>: Music posts get buried in feeds immediately</li>
+            <li><strong>Spotify Social</strong>: Platform-locked, excludes Apple Music and SoundCloud users</li>
+            <li><strong>Group chats</strong>: Links disappear in conversation noise</li>
+            <li><strong>JQBX</strong>: Too complex, now discontinued</li>
           </ul>
-          <h4>Existing solutions gaps</h4>
-          <ul>
-            <li><strong>Social media</strong>: Music posts lost in feeds</li>
-            <li><strong>Spotify Social</strong>: Limited to one platform</li>
-            <li><strong>Group chats</strong>: Links buried in conversation</li>
-          </ul>
-          <h4>Opportunity</h4>
-          <p>Create a friend-focused, platform-agnostic daily music sharing experience that works across all streaming services.</p>
+          <p>No tool was built for the simple use case: a shared, daily, trusted space for close friends.</p>
         </section>
 
         <section id="users" class="study-section">
           <h3>Becoming My Users</h3>
-          <h4>Research methods</h4>
-          <ul>
-            <li>Daily observation of friend group music sharing behavior</li>
-            <li>8 informal interviews about music discovery habits</li>
-            <li>A/B testing different sharing mechanics</li>
-            <li>Usage tracking during beta testing</li>
-          </ul>
-          <h4>Primary users: College friends (ages 20–24)</h4>
-          <ul>
-            <li><strong>Goal</strong>: Discover new music that matches their taste</li>
-            <li><strong>Behavior</strong>: Uses multiple streaming platforms, shares in group chats</li>
-            <li><strong>Quote</strong>: "I trust my friends' music taste more than any algorithm"</li>
-          </ul>
-          <h4>Key insights</h4>
-          <ul>
-            <li>One song per day felt right — not overwhelming but consistent</li>
-            <li>Platform flexibility crucial — friends used different services</li>
-            <li>Daily reset created urgency — made people check regularly</li>
-            <li>Simplicity was key — complex features were ignored</li>
-          </ul>
+          <p>I observed my own friend group's music sharing behavior for several weeks before writing any code. The insight wasn't from a formal interview — it was from watching what actually happened when someone wanted to share a song. They opened a chat, pasted a link, and it disappeared.</p>
+          <p>The behavior I was designing for already existed. I just needed to give it a dedicated place.</p>
         </section>
 
         <section id="competitors" class="study-section">
           <h3>Competitor Research</h3>
-          <h4>Alternatives analyzed</h4>
           <ul>
             <li><strong>JQBX</strong>: Too complex, now discontinued</li>
             <li><strong>Discord music bots</strong>: Platform-locked, not daily-focused</li>
-            <li><strong>Spotify/Apple social</strong>: Limited to single platforms</li>
+            <li><strong>Spotify/Apple social</strong>: Single-platform, excludes most of your friend group</li>
           </ul>
-          <h4>Key findings</h4>
-          <ul>
-            <li>No simple daily sharing apps for cross-platform music</li>
-            <li>Most solutions too complex with unnecessary features</li>
-            <li>Platform lock-in prevented equal participation</li>
-          </ul>
-          <h4>Our advantage</h4>
-          <p>Simple daily ritual + platform agnostic + friend-only focus</p>
+          <p>The gap: no simple daily sharing app for cross-platform music within a close group.</p>
         </section>
 
         <section id="solution" class="study-section">
-          <h3>Solution</h3>
-          <h4>Design principles</h4>
-          <ul>
-            <li>One song, one day — Constraint creates focus and habit</li>
-            <li>Platform agnostic — Accept URLs from any streaming service</li>
-            <li>Friend-only — No strangers, just trusted connections</li>
-            <li>Daily refresh — Keeps experience fresh and urgent</li>
-          </ul>
-          <h4>Key features</h4>
-          <ul>
-            <li>Simple URL input — paste any music link from any platform</li>
-            <li>Daily submission limit — forces thoughtful curation</li>
-            <li>Shared daily playlist — see everyone's picks in one place</li>
-            <li>24-hour reset — list refreshes daily for freshness</li>
-          </ul>
-          <h4>Mechanic testing (within the 12-person group)</h4>
-          <ul>
-            <li>One song limit vs. unlimited: the constraint won decisively — the group felt the list was more curated and worth checking; unlimited felt like a feed</li>
-            <li>Daily reset vs. weekly: daily drove far more consistent check-ins across a 3-week trial — the 24-hour window created just enough urgency</li>
-            <li>Direct URL paste vs. in-app search: 11 of 12 preferred paste — lower friction, and it worked across every platform without additional API work</li>
-          </ul>
-          <h4>The feature I almost built:</h4>
-          <p>I had Spotify, Apple Music, and SoundCloud API auth flows half-written before I stopped. I was solving a discovery problem nobody actually had — my friends already knew what they wanted to share. The friction wasn't finding the song, it was that there was no shared place to post it that everyone would actually check. I killed the search feature in week 3. The URL paste field became the entire submission experience.</p>
+          <h3>How I Designed It</h3>
+          <h4>One song per day</h4>
+          <p>Forces curation. Nobody shares throwaway picks when they only get one slot. In testing, unlimited sharing immediately made the list feel like a feed — something to scroll past, not something to check.</p>
+          <h4>24-hour reset</h4>
+          <p>Creates just enough urgency to build a daily habit without feeling like homework. Weekly reset didn't drive the same consistency in a 3-week trial.</p>
+          <h4>Platform agnostic via URL paste</h4>
+          <p>I had Spotify, Apple Music, and SoundCloud API auth flows half-written before I stopped. I was solving a discovery problem nobody actually had. My friends already knew what they wanted to share — the friction wasn't finding the song, it was that there was no shared place to post it. I killed the in-app search in week 3. The URL paste field became the entire submission experience. 11 of 12 users preferred it.</p>
         </section>
 
         <section id="designs" class="study-section">
           <h3>Final Designs</h3>
-          <h4>Core experience</h4>
-          <ul>
-            <li>Clean landing page: "Share one song a day and discover what others are listening to"</li>
-            <li>Simple submission: One URL input field with submit button</li>
-            <li>Daily playlist view: List of all friend submissions with attribution</li>
-            <li>Cross-platform: Works on desktop and mobile</li>
-          </ul>
-          
           <div class="design-process">
-            <h4>Design Process</h4>
             <div class="process-images">
               <img src="images/design-process-1.jpg" alt="Friend.radio Design Process Step 1" class="process-image">
               <img src="images/design-process-2.jpg" alt="Friend.radio Design Process Step 2" class="process-image">
@@ -188,51 +124,14 @@
               <img src="images/design-process-4.jpg" alt="Friend.radio Design Process Step 4" class="process-image">
             </div>
           </div>
-          <h4>Technical implementation</h4>
-          <ul>
-            <li>Real-time updates — submissions appear immediately</li>
-            <li>URL validation — accepts all major streaming platforms</li>
-            <li>Daily auto-reset — clears list every 24 hours</li>
-            <li>Minimal authentication — simple friend group access</li>
-          </ul>
         </section>
 
         <section id="reflection" class="study-section">
           <h3>Reflection</h3>
-          <h4>Results (3 months post‑launch)</h4>
-          <ul>
-            <li>All 12 users still active at 3 months — no drop-off after the novelty wore off</li>
-            <li>Morning check-ins became a routine; the group started referencing songs from the app in conversation</li>
-            <li>~60% more new artists in personal libraries at 6 weeks, self-reported (small sample, not controlled)</li>
-            <li>Zero support requests — the app was simple enough to never need explanation</li>
-          </ul>
-          <h4>What worked</h4>
-          <ul>
-            <li>One song constraint created perfect engagement balance</li>
-            <li>Platform flexibility — no one excluded by streaming choice</li>
-            <li>Daily reset urgency drove consistent usage</li>
-            <li>Friend-only focus provided trusted recommendations</li>
-          </ul>
-          <h4>Key challenges</h4>
-          <ul>
-            <li>API complexity — handling multiple streaming platform formats</li>
-            <li>Real-time architecture — implementing live updates efficiently</li>
-            <li>Cross-platform compatibility — consistent experience everywhere</li>
-          </ul>
-          <h4>User requests for v2</h4>
-          <ul>
-            <li>Song previews — hear snippets before clicking</li>
-            <li>Album artwork — visual appeal enhancement</li>
-            <li>Historical access — revisit previous days</li>
-            <li>Save functionality — bookmark favorite discoveries</li>
-          </ul>
-          <h4>Personal growth</h4>
-          <ul>
-            <li>End-to-end development — problem to shipped product</li>
-            <li>Constraint-driven design — learned how limitations improve experiences</li>
-            <li>User-centered iteration — building based on real friend feedback</li>
-            <li>Technical problem-solving — complex integrations and data management</li>
-          </ul>
+          <h4>What I'd do differently:</h4>
+          <p>The design is intentionally minimal, but a few things users kept asking for have merit: song previews so you can hear a snippet before clicking through, and album artwork to give the daily list more visual pull. Neither would add complexity — they'd add warmth. I'd ship those in v2.</p>
+          <h4>What I took from this:</h4>
+          <p>Killing the search feature was the most important product decision I made on this project. I had real engineering work invested in it. The feature worked. But it was solving a problem that didn't exist in the actual use case — my users already had the song, they just needed somewhere to put it. Shipping a URL paste field instead of an in-app search saved weeks of development and made the product better. Sometimes the right call is recognizing that what you built isn't what you needed to build.</p>
         </section>
       </article>
     </div>

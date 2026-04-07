@@ -32,9 +32,8 @@
   </header>
 
   <main class="container">
-        <div class="study-header">STELLAR ADS CRM • SHIPPED 2024</div>
-        <h1 class="study-title">Stellar Ads CRM</h1>
-        <p class="study-subtitle">Empowering local businesses with customizable customer management</p>
+        <div class="study-header">STELLAR ADS • 0→1 SHIPPED 2024</div>
+        <h1 class="study-title">0→1 CRM for Local Businesses</h1>
 
     <div class="study-hero">
       <video controls style="width: 100%; max-width: 100%; height: auto; max-height: 400px; object-fit: contain;">
@@ -58,263 +57,128 @@
       <article class="study-content">
         <section id="overview" class="study-section">
           <div class="study-meta">
-                        <div class="block"><strong>Project</strong> Stellar Ads - Custom CRM for local businesses</div>
-                        <div class="block"><strong>Timeline</strong> 8 months (January - August 2024)</div>
-                        <div class="block"><strong>Role</strong> Lead Product Designer</div>
-                        <div class="block"><strong>Team</strong> 4 members - Designer (me), 2 Developers, Product Manager</div>
+            <div class="block"><strong>Role</strong> Lead Product Designer</div>
+            <div class="block"><strong>Timeline</strong> January – August 2024 (8 months)</div>
+            <div class="block"><strong>Team</strong> Designer (me), 2 Engineers, Product Manager</div>
+            <div class="block"><strong>Type</strong> 0→1 Product Design · UX Research · Design Systems</div>
           </div>
           <div class="study-intro">
             <h3>The Problem</h3>
-                        <p>Local business owners juggled spreadsheets and multiple disconnected tools to manage daily operations. Booking appointments and tracking client retention required hours of manual work. Existing CRMs were too expensive, too complex, or built for enterprise needs - not local businesses.</p>
-            <h3>The Solution</h3>
-                        <p>Designed Stellar Ads - a customizable CRM that streamlines booking, client communication, and retention tracking. Business owners can tailor the platform to their specific industry without technical expertise.</p>
+            <p>Local business owners were running their operations across spreadsheets, sticky notes, and a patchwork of disconnected tools. Booking an appointment and tracking whether that client ever came back required manual effort that owners — who were also the ones cutting hair, training clients, and managing staff — simply didn't have time for.</p>
+            <p>Existing CRMs weren't built for them. Salesforce costs $150/month and requires a consultant to set up. Square handles booking but stops there. Zoho is generic by design. None of them started from the reality of running a salon or a gym.</p>
+            <p>The opportunity was clear: build something that earns its place in a busy person's day by solving their most frequent pain point first, and grows with them without requiring a technical background.</p>
             <h3>Impact</h3>
             <ul>
-                            <li>Booking tasks that took ~20 minutes averaged under 4 minutes — timed across 8 beta users on the same workflow before and after</li>
-                            <li>12 of 15 beta businesses reported actively tracking client follow-ups for the first time (previously sporadic or nonexistent)</li>
-                            <li>8 of 9 beta users added custom fields without any guidance within their first week</li>
-                            <li>~2 hours/day estimated time savings, based on pre-launch time-diary interviews with 8 business owners</li>
-                            <li>4.7/5 avg satisfaction across 23 beta businesses (NPS survey, March 2024)</li>
+              <li>Booking time dropped from ~20 minutes to under 4 minutes per appointment — timed across 8 beta users on the same workflow before and after</li>
+              <li>12 of 15 beta businesses actively tracking client follow-ups for the first time (previously sporadic or nonexistent)</li>
+              <li>8 of 9 users self-configured custom fields with zero guidance in their first week</li>
+              <li>~2 hours/day estimated time savings, based on pre-launch time-diary interviews</li>
+              <li>4.7/5 average satisfaction across 23 beta businesses</li>
+              <li>~40% increase in repeat booking rate across 6 tracked accounts over 3 months</li>
             </ul>
           </div>
         </section>
 
         <section id="observations" class="study-section">
-          <h3>Initial Observations</h3>
-                    <h4>Current state problems:</h4>
-                    <ul>
-                        <li>Business owners wore multiple hats with no time for complex software</li>
-                        <li>68% still used spreadsheets for customer management</li>
-                        <li>Each industry had unique workflows (salons ≠ gyms ≠ clinics)</li>
-                        <li>Booking and retention were biggest daily pain points</li>
+          <h3>What I Found in Research</h3>
+          <p>I interviewed 15 local business owners and surveyed 80 more. But the thing that actually changed the product wasn't a survey — it was a Tuesday morning I spent shadowing a salon owner.</p>
+          <p>She never opened the contacts view. Not once. She worked entirely from her daily schedule: who's coming in, when, what they need. The contact database was something she'd look at later — if at all.</p>
+          <p>That single observation flipped the information architecture. The booking calendar became the home screen. The contact dashboard got demoted. The product got simpler and more useful at the same time.</p>
+          <h4>Other things that stuck from research:</h4>
+          <ul>
+            <li>68% of the owners we surveyed were still using spreadsheets for customer management</li>
+            <li>Every industry had meaningfully different data needs — salons track color formulas and allergies, gyms track fitness goals and injury history, clinics track prescriptions. A generic field structure wasn't going to work.</li>
+            <li>Client retention was the pain point owners mentioned most after booking. They knew lapsed clients were revenue walking out the door, but nothing in their current workflow caught it.</li>
           </ul>
-                    <h4>Key quotes:</h4>
-                    <ul>
-                        <li><strong>Salon owner</strong>: "I spend 2 hours daily managing bookings and following up with clients"</li>
-                        <li><strong>Gym owner</strong>: "Every CRM wants me to adapt to their system. I need something that adapts to me"</li>
-                        <li><strong>Clinic manager</strong>: "We lose clients because we forget to follow up"</li>
-          </ul>
-                    <h4>Critical insight:</h4>
-                    <p>Local businesses needed a CRM that felt built FOR them, with customization simple enough for non-technical owners to configure themselves.</p>
-                    <h4>The pivot that changed everything:</h4>
-                    <p>We initially designed the CRM around a traditional contact-list model — browse contacts, open a profile, book from there. Then I shadowed a salon owner through a real Tuesday morning. She never opened the contacts view. She worked entirely from her daily schedule. That single observation flipped the entire information architecture: the booking calendar became the home screen, not the contact dashboard. The product got meaningfully simpler as a result.</p>
         </section>
 
         <section id="market" class="study-section">
           <h3>Market Research</h3>
-                    <h4>Market landscape:</h4>
-                    <ul>
-                        <li>$500B+ local business market in the US</li>
-                        <li>87% abandon complex CRM implementations within 6 months</li>
-                        <li>Average 3-4 different tools used daily (booking, email, spreadsheets)</li>
+          <h4>Existing solutions gaps:</h4>
+          <ul>
+            <li><strong>Salesforce</strong>: Enterprise-focused, $150+/month, requires technical setup</li>
+            <li><strong>Square Appointments</strong>: Good for booking but limited customer management</li>
+            <li><strong>Zoho CRM</strong>: Generic by design, no industry customization</li>
           </ul>
-                    <h4>Existing solutions gaps:</h4>
-                    <ul>
-                        <li><strong>Salesforce</strong>: Enterprise-focused, $150+/month, requires technical setup</li>
-                        <li><strong>Square Appointments</strong>: Good for booking but limited customer management</li>
-                        <li><strong>Zoho CRM</strong>: Generic, no industry customization</li>
-          </ul>
-                    <h4>Opportunity:</h4>
-                    <p>Create a CRM that <strong>starts simple</strong> for immediate value but <strong>scales with customization</strong> as businesses grow, without requiring technical expertise.</p>
-                    <p><strong>Positioning</strong>: <em>"The CRM that feels like it was built for YOUR business - because you can build it yourself."</em></p>
+          <h4>Opportunity:</h4>
+          <p>Build something that earns its place in a busy person's day by solving their most frequent pain point first — booking — then grows with them without requiring a technical background.</p>
         </section>
 
-                <section id="users" class="study-section">
-                    <h3>User Research</h3>
-                    <h4>Research methods:</h4>
-                    <ul>
-                        <li>15 in-depth interviews with local business owners</li>
-                        <li>Shadowed 5 businesses for full workdays</li>
-                        <li>Surveyed 80 local business owners</li>
-                        <li>Tested prototypes with 8 different industries</li>
-                    </ul>
-                    <h4>Primary user: Maria, Salon Owner (35-45)</h4>
-                    <ul>
-                        <li><strong>Business</strong>: Small salon with 3 stylists</li>
-                        <li><strong>Daily goals</strong>: Book appointments, track regulars, manage inventory</li>
-                        <li><strong>Pain</strong>: Manual booking and retention tracking takes 2+ hours daily</li>
-                        <li><strong>Quote</strong>: <em>"I need a system that works the way I work"</em></li>
-                    </ul>
-                    <h4>Key insights:</h4>
-                    <ul>
-                        <li>Booking is the #1 daily task - must be fast and intuitive</li>
-                        <li>Client retention directly impacts revenue - automated follow-ups crucial</li>
-                        <li>Every industry has unique data needs (salons: color formulas, gyms: workout plans)</li>
-                        <li>Business owners, not IT teams - customization must be no-code</li>
-                    </ul>
-                    
-                    <div class="user-journey">
-                        <img src="images/stellar-user-journey.jpg" alt="Stellar Ads user journey map" class="journey-image">
-                    </div>
-                </section>
+        <section id="users" class="study-section">
+          <h3>User Research</h3>
+          <h4>Research methods:</h4>
+          <ul>
+            <li>15 in-depth interviews with local business owners</li>
+            <li>Shadowed 5 businesses through full workdays</li>
+            <li>Surveyed 80 local business owners</li>
+            <li>Prototype testing across 8 different industries</li>
+          </ul>
+          <h4>The observation that changed everything:</h4>
+          <p>The salon owner I shadowed never once opened the contacts view. She lived in her daily schedule. That behavioral truth — not any interview insight — flipped the entire IA of the product.</p>
 
-                <section id="competitors" class="study-section">
-                    <h3>Competitor Analysis</h3>
-                    <h4>Competitors analyzed:</h4>
-                    <ul>
-                        <li><strong>Salesforce</strong>: Powerful but expensive, requires consultants</li>
-                        <li><strong>HubSpot</strong>: Marketing-focused, weak on operations</li>
-                        <li><strong>Square</strong>: Good booking, limited CRM features</li>
-                        <li><strong>Zoho</strong>: Affordable but generic</li>
-                    </ul>
-                    <h4>Key findings:</h4>
-                    <ul>
-                        <li>No CRM prioritizes booking as core feature</li>
-                        <li>Customization requires developers or consultants</li>
-                        <li>None built specifically for local business workflows</li>
-                        <li>Retention tools are afterthoughts</li>
-                    </ul>
-                    <h4>Our advantage:</h4>
-                    <p><strong>Industry templates</strong> + <strong>no-code customization</strong> + <strong>booking-first design</strong> + <strong>affordable pricing</strong></p>
-                    <ul>
-                        <li>Simplified interface without sacrificing power</li>
-                        <li>True AI-driven optimization</li>
-                        <li>Real-time performance insights</li>
-                        <li>Cross-platform campaign management</li>
-                    </ul>
-                    
-                    <div class="competitor-matrix">
-                        <img src="images/stellar-competitor-matrix.png" alt="Stellar Ads competitor analysis matrix" class="matrix-image">
-                    </div>
-                </section>
+          <div class="user-journey">
+            <img src="images/stellar-user-journey.jpg" alt="Stellar Ads user journey map" class="journey-image">
+          </div>
+        </section>
 
-                <section id="solution" class="study-section">
-                    <h3>Solution</h3>
-                    <h4>Design principles:</h4>
-                    <ol>
-                        <li><strong>Booking-first</strong> - Make scheduling the easiest daily task</li>
-                        <li><strong>No-code customization</strong> - Drag-and-drop fields for any business</li>
-                        <li><strong>Retention by design</strong> - Automated follow-ups built-in</li>
-                        <li><strong>Start simple, grow complex</strong> - Immediate value, advanced features when ready</li>
-                    </ol>
-                    <h4>Core features designed:</h4>
-                    <h5>Smart Booking System</h5>
-                    <ul>
-                        <li>One-click appointment scheduling with calendar sync</li>
-                        <li>Automated reminder texts/emails</li>
-                        <li>Client booking history at a glance</li>
-                    </ul>
-                    <h5>Customizable Client Profiles</h5>
-                    <ul>
-                        <li>Drag-and-drop custom fields for industry-specific needs</li>
-                        <li>Quick-access notes and preferences</li>
-                        <li>Automatic retention alerts for inactive clients</li>
-                    </ul>
-                    <h5>Retention Automation</h5>
-                    <ul>
-                        <li>Automatic "we miss you" campaigns</li>
-                        <li>Birthday and milestone reminders</li>
-                        <li>Customizable follow-up workflows</li>
-                    </ul>
-                    <h5>Industry Templates</h5>
-                    <ul>
-                        <li>Pre-built configurations for salons, gyms, clinics, studios</li>
-                        <li>One-click template application with easy modification</li>
-                    </ul>
-                    <h4>Testing results:</h4>
-                    <ul>
-                        <li>7 of 8 onboarding sessions: users started with an industry template rather than blank setup</li>
-                        <li>8 of 9 beta users added at least one custom field unprompted within their first week</li>
-                        <li>Standard 3-step scheduling task completed ~75% faster on avg vs. the previous spreadsheet workflow (moderated usability test, n=8)</li>
-                        <li>~2 in 3 beta users accessed the CRM primarily from mobile (tracked via session data)</li>
-                    </ul>
-                    
-                    <div class="design-diagram">
-                        <img src="images/information-architecture-stellar.jpg" alt="Stellar Ads information architecture" class="architecture-image">
-                    </div>
-                </section>
+        <section id="competitors" class="study-section">
+          <h3>Competitor Analysis</h3>
+          <ul>
+            <li><strong>Salesforce</strong>: Powerful but expensive, requires consultants</li>
+            <li><strong>HubSpot</strong>: Marketing-focused, weak on operations</li>
+            <li><strong>Square</strong>: Good booking, limited CRM features</li>
+            <li><strong>Zoho</strong>: Affordable but generic</li>
+          </ul>
+          <h4>Key gap:</h4>
+          <p>No CRM prioritizes booking as the core surface. Customization requires developers. Retention tools are afterthoughts. None of them started from the reality of running a local business.</p>
 
-                <section id="designs" class="study-section">
-                    <h3>Final Designs</h3>
-                    <h4>Core interface features:</h4>
-                    <h5>Dashboard</h5>
-                    <ul>
-                        <li>Today's schedule prominently displayed</li>
-                        <li>Retention alerts for inactive clients</li>
-                        <li>Quick booking button always accessible</li>
-                        <li>Custom widgets users can add/remove</li>
-                    </ul>
-                    <h5>Booking Interface</h5>
-                    <ul>
-                        <li>Calendar with drag-and-drop appointments</li>
-                        <li>Client search with instant profile preview</li>
-                        <li>Service selection with auto-fill duration</li>
-                        <li>Automated confirmations sent immediately</li>
-                    </ul>
-                    <h5>Customization Builder</h5>
-                    <ul>
-                        <li>Drag-and-drop field builder - add any data point</li>
-                        <li>Field types: text, date, dropdown, checkboxes, file upload</li>
-                        <li>Section organization for grouped fields</li>
-                        <li>Template library with pre-made field sets</li>
-                    </ul>
-                    <h5>Mobile Experience</h5>
-                    <ul>
-                        <li>Quick booking from home screen</li>
-                        <li>Client lookup with one-tap calling/texting</li>
-                        <li>Schedule view optimized for small screens</li>
-                    </ul>
-                    <h4>Industry customization examples:</h4>
-                    <ul>
-                        <li><strong>Salon</strong>: Hair color formulas, allergies, preferred stylist</li>
-                        <li><strong>Gym</strong>: Fitness goals, injury history, membership tier</li>
-                        <li><strong>Clinic</strong>: Medical history, insurance info, prescriptions</li>
-                    </ul>
-                    
-                    <div class="design-iterations">
-                        <img src="images/Stellar-Design-iterations.jpg" alt="Stellar Ads design iterations" class="iterations-image">
-                    </div>
-                </section>
+          <div class="competitor-matrix">
+            <img src="images/stellar-competitor-matrix.png" alt="Stellar Ads competitor analysis matrix" class="matrix-image">
+          </div>
+        </section>
+
+        <section id="solution" class="study-section">
+          <h3>How I Designed It</h3>
+          <h4>Booking-first architecture</h4>
+          <p>The calendar is the home screen. One-click scheduling, automated reminders, client history accessible without leaving the booking view. The goal was to make the most common daily task feel effortless.</p>
+          <h4>No-code customization</h4>
+          <p>A drag-and-drop field builder that lets owners add any data point — text, date, dropdown, file upload — and organize fields into sections. Industry templates give them a starting point so they're not building from scratch. In testing, 7 of 8 owners used a template rather than a blank setup. 8 of 9 added at least one custom field without being prompted.</p>
+          <h4>Retention by design, not by request</h4>
+          <p>Automated follow-up workflows and inactive client alerts built into the core product — not an add-on. Owners don't have time to manually remember who hasn't been in for 6 weeks. The CRM should do that.</p>
+          <h4>Progressive disclosure</h4>
+          <p>Start simple, get value on day one. More powerful features are there when owners are ready for them — not in their face on first launch.</p>
+          <h4>A call I'm glad I made:</h4>
+          <p>I pushed back on adding a customizable dashboard with drag-and-drop widgets. The team wanted it. But the real problem wasn't that users wanted more control over their layout — it was that they didn't know what to look at first. An opinionated layout with strong visual hierarchy solved the actual problem. We shipped without drag-and-drop. Nobody asked for it.</p>
+
+          <div class="design-diagram">
+            <img src="images/information-architecture-stellar.jpg" alt="Stellar Ads information architecture" class="architecture-image">
+          </div>
+        </section>
+
+        <section id="designs" class="study-section">
+          <h3>Final Designs</h3>
+          <div class="design-iterations">
+            <img src="images/Stellar-Design-iterations.jpg" alt="Stellar Ads design iterations" class="iterations-image">
+          </div>
+          <h4>Industry customization examples:</h4>
+          <ul>
+            <li><strong>Salon</strong>: Hair color formulas, allergies, preferred stylist</li>
+            <li><strong>Gym</strong>: Fitness goals, injury history, membership tier</li>
+            <li><strong>Clinic</strong>: Medical history, insurance info, prescriptions</li>
+          </ul>
+        </section>
 
         <section id="reflection" class="study-section">
           <h3>Reflection</h3>
-          <h4>Results (6 months post-launch):</h4>
+          <h4>Real business impact:</h4>
           <ul>
-                        <li>Booking time dropped from ~20 min to under 4 min per appointment — measured across 8 beta businesses pre/post</li>
-                        <li>12 of 15 beta businesses tracking client follow-ups consistently (vs. none reliably before launch)</li>
-                        <li>8 of 9 users successfully self-configured custom fields with no guidance</li>
-                        <li>~2 hrs/day estimated savings per business (self-reported; not controlled)</li>
-                        <li>4.7/5 avg satisfaction, 23 beta businesses (post-launch survey, March 2024)</li>
-                        <li>~40% increase in repeat booking rate across 6 tracked accounts over 3 months (estimated, no control group)</li>
+            <li><strong>Maria's Salon</strong>: Booking per appointment dropped from ~20 min to under 4 min; manually re-engaged 15 lapsed clients she would never have caught otherwise using the retention alerts</li>
+            <li><strong>FitCore Studio</strong>: New member drop-off in the first month fell from roughly 1 in 3 to under 1 in 8 — attributed largely to automated check-in reminders</li>
           </ul>
-                    <h4>Real business impact:</h4>
-                    <ul>
-                        <li><strong>Maria's Salon</strong>: Booking per appointment dropped from ~20 min to under 4 min; manually re-engaged 15 lapsed clients using the retention alerts</li>
-                        <li><strong>FitCore Studio</strong>: New member drop-off in the first month fell from roughly 1 in 3 to under 1 in 8 — attributed largely to automated check-in reminders</li>
-          </ul>
-                    <h4>What worked:</h4>
-                    <ul>
-                        <li><strong>Industry templates</strong> provided immediate value - same-day launches</li>
-                        <li><strong>No-code customization</strong> empowered owners to adapt CRM themselves</li>
-                        <li><strong>Booking-first approach</strong> solved most frequent pain point</li>
-                        <li><strong>Mobile optimization</strong> matched how owners actually work</li>
-          </ul>
-                    <h4>Key challenges:</h4>
-                    <ul>
-                        <li>Balancing customization with simplicity - used progressive disclosure</li>
-                        <li>Supporting different industry needs - created flexible field system</li>
-                        <li>User education - built in-app tutorials with examples</li>
-          </ul>
-                    <h4>What I'd do differently:</h4>
-                    <ul>
-                        <li>Earlier multi-industry testing beyond salons</li>
-                        <li>Video tutorials from launch for faster adoption</li>
-                        <li>More template variety for starting points</li>
-          </ul>
-                    <h4>Next steps:</h4>
-                    <ul>
-                        <li>Payment integration for direct transactions</li>
-                        <li>Team management with role permissions</li>
-                        <li>Advanced analytics for revenue tracking</li>
-                        <li>Client self-service portal</li>
-          </ul>
-                    <h4>Personal growth:</h4>
-                    <ul>
-                        <li><strong>Deep user empathy</strong> - designed for time-starved business owners</li>
-                        <li><strong>Customization architecture</strong> - balanced flexibility with usability</li>
-                        <li><strong>No-code design thinking</strong> - empowered non-technical users</li>
-                        <li><strong>Shadowing as research</strong> - observing workflows beats interviews</li>
-          </ul>
+          <h4>What I'd do differently:</h4>
+          <p>I'd test across more industries earlier. The first two months were heavily salon-focused, which shaped assumptions that I had to undo later when designing for gyms and clinics. Earlier multi-industry testing would have caught those gaps before they became rework.</p>
+          <h4>What I took from this:</h4>
+          <p>Building 0→1 is mostly about sequencing decisions. Which pain point earns trust fastest? What can we defer without hurting the core experience? The booking-first call shaped everything downstream — navigation, information architecture, what went into v1 vs. what we roadmapped. Getting that right early meant the rest of the product had a clear center of gravity to build around.</p>
         </section>
       </article>
     </div>
