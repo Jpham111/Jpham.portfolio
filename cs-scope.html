@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scope XY-7 — Real-Time Oscilloscope for macOS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header minimal">
+    <nav class="nav right-nav">
+      <div class="nav-links">
+        <a href="index.html#work" class="nav-item"><span>&larr; Back</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="study-header">SCOPE XY-7 &bull; SHIPPED 2025</div>
+    <h1 class="study-title">Real-Time Lissajous Oscilloscope</h1>
+
+    <div class="study-hero">
+      <video controls style="width: 100%; max-width: 100%; height: auto; max-height: 400px; object-fit: contain;">
+        <source src="videos/scope-demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="study-layout">
+      <aside class="study-sidebar">
+        <a class="active" href="#overview">Overview</a>
+        <a href="#why">Why Build This</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#rendering">Rendering Pipeline</a>
+        <a href="#design">Design Decisions</a>
+        <a href="#challenges">Challenges</a>
+        <a href="#reflection">Reflection</a>
+      </aside>
+
+      <article class="study-content">
+        <section id="overview" class="study-section">
+          <div class="study-meta">
+            <div class="block"><strong>Role</strong> Designer &amp; Developer</div>
+            <div class="block"><strong>Timeline</strong> May 2025 (2 weeks)</div>
+            <div class="block"><strong>Team</strong> Solo</div>
+            <div class="block"><strong>Type</strong> Native macOS App &middot; Real-Time Graphics &middot; Audio Engineering</div>
+          </div>
+
+          <div class="study-intro">
+            <h3>What It Does</h3>
+            <p>Scope XY-7 is a macOS menubar app that captures system audio and renders it as a real-time Lissajous (XY) or waveform display. It simulates the look of an analog CRT oscilloscope &mdash; phosphor persistence, bloom glow, vignette darkening &mdash; all running at 60fps in a borderless floating window.</p>
+            <p>No virtual audio drivers. No kernel extensions. Just ScreenCaptureKit piping system audio through a lock-free ring buffer into a Core Graphics offscreen renderer.</p>
+            <h3>Key Features</h3>
+            <ul>
+              <li>XY (Lissajous) and waveform display modes</li>
+              <li>Adjustable phosphor persistence and gain</li>
+              <li>4 phosphor colors: green, amber, white, orange</li>
+              <li>CRT bloom glow via downscale/upscale compositing</li>
+              <li>Light and dark mode</li>
+              <li>PNG snapshot and MP4 video recording</li>
+              <li>Floating borderless window with dynamic dock icon</li>
+              <li>Auto-relaunch permission flow for new users</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="why" class="study-section">
+          <h3>Why Build This</h3>
+          <p>I wanted to see what music looks like. Lissajous figures &mdash; where left audio maps to X and right maps to Y &mdash; turn stereo separation, phase relationships, and frequency ratios into visual geometry. A mono signal is a diagonal line. A pure stereo sine wave is a circle. Real music produces constantly evolving organic shapes.</p>
+          <p>Existing tools were either expensive hardware, Windows-only, or web apps that couldn't capture system audio without browser hacks. macOS had no native option that was lightweight, beautiful, and just worked from the menubar.</p>
+        </section>
+
+        <section id="architecture" class="study-section">
+          <h3>Architecture</h3>
+          <p>The app has four layers, each running on its own thread or context:</p>
+          <ul>
+            <li><strong>Audio capture</strong> &mdash; ScreenCaptureKit SCStream on a high-priority GCD queue, extracting interleaved float samples from CMSampleBuffer</li>
+            <li><strong>Ring buffer</strong> &mdash; 2048-sample circular buffer with NSLock. Snapshots are copied in-place so the renderer never blocks the audio thread</li>
+            <li><strong>Renderer</strong> &mdash; Core Graphics offscreen CGContext. Persistence is achieved by partially clearing the buffer each frame (filling with background color at low alpha). Grid and vignette are cached as CGImages and only rebuilt on size/color/mode change</li>
+            <li><strong>Display</strong> &mdash; NSView driven by CADisplayLink at 60fps. The view reads directly from the ring buffer snapshot &mdash; no main thread dispatch for audio data</li>
+          </ul>
+          <p>This separation means the audio callback never touches the main thread, the renderer never allocates, and SwiftUI controls stay responsive even during heavy rendering.</p>
+        </section>
+
+        <section id="rendering" class="study-section">
+          <h3>Rendering Pipeline</h3>
+          <p>Each frame follows this sequence:</p>
+          <ul>
+            <li><strong>Fade</strong> &mdash; Fill the persistence buffer with the background color at (1 - persistence) alpha. This creates the phosphor decay trail.</li>
+            <li><strong>Trace</strong> &mdash; Draw the audio path as two strokes: a wide dim outer (4px, 25% alpha) for phosphor spread, then a sharp bright core (1.5px, 100%) on top</li>
+            <li><strong>Bloom</strong> &mdash; Downscale the trace buffer to 25%, then draw it back at full size. Bilinear upscaling acts as a free Gaussian blur, creating the CRT glow</li>
+            <li><strong>Grid</strong> &mdash; Composite the cached grid overlay (8x8 divisions, center crosshair, diagonal guides in XY mode)</li>
+            <li><strong>Vignette</strong> &mdash; Composite the cached radial gradient for edge darkening</li>
+          </ul>
+          <p>The trace is downsampled to ~512 points per frame (from 2048 in the ring buffer) for performance. At 60fps on a 420px display, this is well above visual fidelity requirements.</p>
+        </section>
+
+        <section id="design" class="study-section">
+          <h3>Design Decisions</h3>
+          <h4>Teenage Engineering language</h4>
+          <p>The UI uses 9px monospaced type, 1px borders, flat controls with no shadows, and #FF6600 orange as the only accent color. This creates a tool aesthetic &mdash; the interface disappears and the visualization is the product.</p>
+          <h4>Borderless floating window</h4>
+          <p>A popover felt too disposable for something you want to keep visible while working. A full window felt too heavy for a utility. The floating panel splits the difference: always on top, draggable, resizable, but no title bar chrome. The dock icon only appears when the window is open.</p>
+          <h4>Permission flow</h4>
+          <p>ScreenCaptureKit requires Screen Recording permission, which is confusing for an audio-only app. The onboarding screen explains this upfront, auto-detects when permission is granted, and relaunches the app automatically. The user never has to manually quit and reopen.</p>
+        </section>
+
+        <section id="challenges" class="study-section">
+          <h3>Challenges</h3>
+          <h4>Main thread starvation</h4>
+          <p>The first version dispatched 4096 float samples to the main thread on every audio callback (~86 times per second). This choked SwiftUI and made buttons unresponsive. The fix: store snapshots directly in the ring buffer and have the renderer read them on its own schedule. Only a single boolean (hasSignal) crosses to the main thread.</p>
+          <h4>TCC permission loop</h4>
+          <p>During development, Xcode re-signs the binary on every build, which invalidates the Screen Recording permission grant. This created a frustrating loop of granting, building, losing permission. The solution for development: sign with a stable team identity. For users: the auto-relaunch flow handles the one-time grant seamlessly.</p>
+          <h4>CVDisplayLink deprecation</h4>
+          <p>The original frame timer used CVDisplayLink, which Apple deprecated. Migrated to CADisplayLink, but the macOS API differs from iOS &mdash; you create it via the NSView instance method, not the class initializer.</p>
+        </section>
+
+        <section id="reflection" class="study-section">
+          <h3>Reflection</h3>
+          <p>This was my first native macOS app and my first time working with real-time audio and offscreen rendering. The biggest lesson: performance problems are architecture problems. Moving data between threads is where frame budgets die, not in the rendering math itself.</p>
+          <p>The Teenage Engineering design constraint was freeing &mdash; with only one accent color and monospaced type, every decision was about information density and visual hierarchy rather than aesthetic choices.</p>
+          <p>Next: signed notarized distribution via DMG, Sparkle auto-updates, and an FFT spectrum mode.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="dark-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="index.html#work">Work</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
