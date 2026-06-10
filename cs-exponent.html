@@ -33,15 +33,17 @@
 
     <main class="container">
         <div class="study-header">EXPONENT • UX RESEARCH → PRODUCT DESIGN 2023–2024</div>
-        <h1 class="study-title">Research-Driven Design System Overhaul</h1>
+        <h1 class="study-title">Designing Restraint into an AI Interface</h1>
 
         <div class="study-layout">
             <aside class="study-sidebar">
                 <a class="active" href="#overview">Overview</a>
-                <a href="#context">The Problem</a>
-                <a href="#setup">Research Process</a>
-                <a href="#sessions">The Design Response</a>
-                <a href="#synthesis">Pipeline Work</a>
+                <a href="#reframe">The Reframe</a>
+                <a href="#process">Research Process</a>
+                <a href="#translation">From Sentiment to Spec</a>
+                <a href="#response">The Design Response</a>
+                <a href="#call">The Hard Call</a>
+                <a href="#pipeline">Closing the Loop</a>
                 <a href="#impact">Results</a>
                 <a href="#reflection">Reflection</a>
             </aside>
@@ -56,73 +58,93 @@
                         <div class="block"><strong>Type</strong> UX Research · Interaction Design · Design Systems</div>
                     </div>
                     <div class="study-intro">
-                        <p class="study-note"><em>Product details are under NDA. Specific screens available on request.</em></p>
-                        <h3>The Problem</h3>
-                        <p>I came into Exponent running usability sessions for a pre-launch wearable with an AI-driven interface. The assumption going in was that users were struggling with feature comprehension — too much to learn, too many things to figure out.</p>
-                        <p>That's not what I found.</p>
-                        <p>The sessions kept surfacing a different pattern: users weren't confused by the features. They felt overwhelmed by the interface's <em>behavior</em>. AI-driven UI elements were updating dynamically, surfacing proactively, and competing for attention simultaneously. Users described feeling like the product was doing too much at once — like they weren't in control of something that was making decisions on their behalf.</p>
-                        <p>That's a fundamentally different diagnosis. And it required a fundamentally different fix.</p>
+                        <p class="study-note"><em>Product details are under NDA. Specifics are generalized; annotated screens available on request under NDA.</em></p>
+                        <h3>In one line</h3>
+                        <p>I was brought on to prove that users couldn't <em>understand</em> a pre-launch AI wearable. The research showed the opposite — they understood it fine; they didn't feel in <em>control</em> of it. I reframed the problem, translated a vague feeling into a concrete interaction spec, and turned that spec into a system-level fix that held across every screen instead of the few we tested.</p>
                         <h3>Results</h3>
                         <ul>
-                            <li>Post-overhaul usability sessions no longer surfaced cognitive overwhelm as a primary complaint — the core problem the design system was built to solve was resolved</li>
-                            <li>Research findings shaped information architecture and design system structure directly, not as a deck that got filed and forgotten</li>
-                            <li>Faster research-to-design pipeline enabled insight-to-iteration cycles that fit within sprint cadence</li>
-                            <li>Progressed from research intern to contract product designer based on scope of contribution</li>
+                            <li>The dominant complaint — cognitive overwhelm — stopped surfacing as a primary theme when the same usability protocol was re-run after the overhaul (the explicit goal the work was scoped against)</li>
+                            <li>The fix shipped at the token and component level, so restraint became the system default rather than a per-screen patch that would regrow on the next screen</li>
+                            <li>Research-to-design latency dropped from a ~2-week synthesis hand-off to insight-to-iteration inside a single sprint</li>
+                            <li>Pain-point maps were adopted directly into the design team's working files — pulled into Figma annotations rather than filed in a deck</li>
+                            <li>Promoted from research intern to contract product designer on the strength of the contribution</li>
                         </ul>
                     </div>
                 </section>
 
-                <section id="context" class="study-section">
-                    <h3>The Problem</h3>
-                    <p>AI-driven UI elements were updating dynamically, surfacing proactively, and competing for attention simultaneously. Users described feeling like the product was doing too much at once — like they weren't in control of something that was making decisions on their behalf.</p>
-                    <p>The language participants used was consistent across sessions: <em>overwhelmed</em>, <em>distracted</em>, <em>like the product is doing too much</em>. "Users feel overwhelmed" is a sentiment. It's not a design input. My job was to translate it into one.</p>
-                    <p>I mapped findings to specific UI moments and interaction patterns — which elements, at which interaction points, were generating the perception of lost control — and brought those to the design and engineering teams as concrete inputs for the system redesign.</p>
+                <section id="reframe" class="study-section">
+                    <h3>The Reframe</h3>
+                    <p>The brief I inherited carried an assumption: users were struggling with <em>feature comprehension</em> — too much to learn, too many things to figure out. The implied fix was education — tooltips, onboarding, progressive teaching.</p>
+                    <p>That's not what the sessions showed. Participants could explain what features did. They could complete tasks. What they couldn't do was <em>predict</em> the interface. AI-driven elements updated on their own, surfaced proactively, and changed multiple regions of the screen at once. The language was strikingly consistent across participants: <em>overwhelmed</em>, <em>distracted</em>, <em>like it's doing too much</em>, <em>like I'm not driving</em>.</p>
+                    <p>That's not a comprehension problem. It's a <strong>control</strong> problem — and the two have opposite fixes. Teaching someone more about a system that already feels out of their hands makes the feeling worse, not better. Getting that distinction right before the team committed engineering time was the highest-leverage thing I did on the project.</p>
+                    <p>So I had to defend the reframe, not just assert it. "Users feel overwhelmed" is a sentiment, and a sentiment isn't a design input. My job was to make it falsifiable and specific enough that design and engineering could build against it.</p>
                 </section>
 
-                <section id="setup" class="study-section">
+                <section id="process" class="study-section">
                     <h3>Research Process</h3>
-                    <h4>Facilitating structured usability sessions</h4>
-                    <p>I ran clean sessions across multiple participant cohorts. My job was to surface what was actually happening — not confirm the team's existing assumptions about what the problem was. That required discipline: letting participants struggle without intervening, and capturing behavioral observations with timestamps anchored to specific task moments rather than loose impressions.</p>
-                    <h4>Auditing the data before building on it</h4>
-                    <p>Before findings could drive decisions, I audited the session logs and participant records. There were inconsistencies that would have introduced noise into any analysis built on top of them. I treated this as a design problem: bad inputs produce bad outputs, regardless of how good the synthesis is. I cleaned the data, flagged the gaps, and made the findings trustworthy before passing them forward.</p>
-                    <h4>Synthesis to architecture</h4>
-                    <p>I synthesized findings using affinity mapping — clustering behavioral observations, direct quotes, and survey responses by theme rather than by participant. This revealed patterns that cut across individual sessions and made the severity of each issue visible as a pattern, not an anecdote.</p>
-                    <p>Deliverables: annotated user flows marking specific failure moments and timestamps, pain-point maps with severity ratings, and prioritized reports structured so findings were scan-able in a 30-second design review and deep-readable when needed. The team started pulling specific quotes directly into Figma annotations.</p>
+                    <h4>Facilitating for behavior, not for agreement</h4>
+                    <p>I ran usability sessions across multiple participant cohorts with one discipline above all: don't rescue the participant, and don't confirm the team's prior. I let people struggle, stayed quiet through the awkward pauses, and captured behavioral observations — hesitations, backtracks, the moment a hand lifted off the device — timestamped to the specific task step rather than logged as loose impressions.</p>
+                    <h4>Auditing the data before trusting it</h4>
+                    <p>Before any of it could drive a decision, I audited the session logs and participant records and found inconsistencies that would have poisoned anything built on top of them. I treated it as a design problem — bad inputs produce confident, wrong outputs — so I cleaned the data, flagged the gaps explicitly, and only then let the findings move forward. Reframing a project on the back of dirty data would have been worse than not reframing it at all.</p>
+                    <h4>Synthesis that exposes pattern, not anecdote</h4>
+                    <p>I clustered behavioral observations, verbatim quotes, and survey responses by theme rather than by participant using affinity mapping. Organizing by theme is what turned "three people mentioned this" into "this is a structural pattern at a specific interaction point" — the difference between an anecdote a PM can wave away and a severity rating a team has to schedule against. The output was annotated flows marking exact failure moments, pain-point maps with severity ratings, and reports built to be scannable in a 30-second design review and deep-readable when someone needed the evidence.</p>
                 </section>
 
-                <section id="sessions" class="study-section">
+                <section id="translation" class="study-section">
+                    <h3>From Sentiment to Spec</h3>
+                    <p>This was the core analytical work, and the part I'm proudest of. I decomposed "overwhelmed" into the observable interface behaviors that were producing it. Across the annotated sessions, the perception of lost control consistently traced back to three mechanisms:</p>
+                    <ul>
+                        <li><strong>Simultaneity</strong> — multiple regions of the screen updated at the same time, so there was no single place to look and no stable anchor to return to.</li>
+                        <li><strong>Unpredictability</strong> — the interface acted without a user-initiated trigger, and gave no signal <em>before</em> it acted, so changes felt like they came from nowhere.</li>
+                        <li><strong>Irreversibility</strong> — once a proactive behavior fired, there was no obvious way to dismiss it or get back to the prior state, so users couldn't recover from a surprise even after they understood it.</li>
+                    </ul>
+                    <p>Framed that way, the felt experience of "I'm not in control" becomes a function of <em>simultaneity × unpredictability × irreversibility</em> — and every one of those is a design lever, not a personality of the AI. That decomposition is what made the problem buildable. Instead of handing the team a feeling, I handed them three specific failure modes mapped to the exact UI moments where each one fired.</p>
+                </section>
+
+                <section id="response" class="study-section">
                     <h3>The Design Response</h3>
-                    <p>The findings directly informed a design system overhaul built around three principles:</p>
-                    <h4>Reduce simultaneous visual competition</h4>
-                    <p>AI-driven elements were de-prioritized when not directly relevant to the user's current context. The interface needed to earn attention, not demand it by default.</p>
-                    <h4>Restore perceived control</h4>
-                    <p>Interaction patterns were redesigned to give users legible affordances for when and how AI-driven behavior would activate. Proactive behaviors were made interruptible — users could see what was happening and stop it.</p>
-                    <h4>Systematize the solution, not just the screen</h4>
-                    <p>The changes were implemented at the component and token level — not patched per-screen, not fixed in the specific flows we happened to test. If the cognitive load reduction only applied to the screens we designed for, the problem would resurface in every new screen. A system-level fix means it holds.</p>
+                    <p>Each mechanism mapped to a deliberate design move, built as system rules rather than one-off screen fixes:</p>
+                    <h4>Against simultaneity: one thing moves at a time</h4>
+                    <p>AI-initiated updates were sequenced into a single active focus zone and choreographed so only one region animated at once. Anything not relevant to the user's current context held still and stepped back in the visual hierarchy. The interface had to <em>earn</em> attention rather than demand it everywhere by default.</p>
+                    <h4>Against unpredictability: telegraph before acting</h4>
+                    <p>Proactive behaviors got a brief, legible pre-state — a signal that something was about to happen and why it was surfacing — instead of appearing fully formed. Predictability is what converts a surprise into an expectation, and an expectation doesn't read as a loss of control.</p>
+                    <h4>Against irreversibility: every proactive action is interruptible</h4>
+                    <p>If the system could act on its own, the user had to be able to see it, stop it, and undo it. Reversibility was treated as a precondition for proactivity, not a nice-to-have bolted on afterward.</p>
+                    <h4>Why it shipped as a system, not a set of screens</h4>
+                    <p>All of this landed at the token and component level: a defined notion of "proactivity level," distinct component states for AI-initiated vs. user-initiated changes, and motion rules baked into the system. Had I patched only the screens we happened to test, the overwhelm would have regrown on every new screen the team built after I left. Encoding restraint as the default behavior of the components is what made the fix durable.</p>
                 </section>
 
-                <section id="synthesis" class="study-section">
-                    <h3>Pipeline Work</h3>
-                    <p>Beyond the product itself, I identified friction in the research-to-design handoff. Studies were completing but findings were getting absorbed slowly — there was latency between when a session finished and when that insight became a design input.</p>
-                    <p>I partnered with research and engineering to streamline how data was collected, structured, and reported. The outcome was faster loops: teams could test design responses to research findings within the same sprint cycle instead of waiting for a synthesis document that arrived two weeks later.</p>
-                    <p>Impact from user research isn't automatic — it's earned by making findings usable. A pain-point map that lives in Notion gets read once. One that's embedded in the designer's FigJam board becomes part of how they think.</p>
+                <section id="call" class="study-section">
+                    <h3>The Hard Call</h3>
+                    <p>There was real pressure — from the product side and from the calendar — to do the opposite of restraint. A pre-launch AI product wants its intelligence to be <em>visible</em>: more proactive surfacing, more "look what it can do," because that's what demos well to stakeholders and reviewers. And with launch close, the fast path was to patch the specific screens we'd tested and call it done.</p>
+                    <p>I argued against both. The behavior that made the product impressive in a 90-second demo was the same behavior that was costing trust in daily use — proactivity that reads as magic on first contact reads as <em>noise</em> by day three. And a screen-level patch under deadline would have looked like progress while leaving the actual mechanism intact. I pushed for fewer, quieter, more legible AI behaviors implemented as system rules, even though it was the slower and less flashy path. Restraint is a harder sell than capability, but it was the call the research supported.</p>
+                </section>
+
+                <section id="pipeline" class="study-section">
+                    <h3>Closing the Loop</h3>
+                    <p>Past the product itself, I found the research-to-design hand-off was where insight went to die. Studies were finishing on time, but findings reached designers slowly — a two-week latency between a session ending and its insight becoming a design input, by which point the sprint had moved on.</p>
+                    <p>I partnered with research and engineering to restructure how session data was captured, cleaned, and reported, so a finding could become a tested design response inside the same sprint instead of arriving as a synthesis doc a fortnight late. Impact from research isn't automatic — it's earned by making findings usable. A pain-point map that lives in Notion gets read once; one embedded in the designer's working file becomes part of how they think. That's why the team started pulling verbatim quotes straight into Figma annotations.</p>
+                    <h4>How I knew it worked</h4>
+                    <p>The measure was deliberately the same instrument as the diagnosis: re-run the original usability protocol after the overhaul and watch whether cognitive overwhelm still surfaced as a primary theme. It didn't. I'm candid that this is a qualitative bar rather than a single hero metric — given the room to redo it, I'd have added a per-task perceived-control rating to put a number on the shift, which is exactly the gap I'd close next time.</p>
                 </section>
 
                 <section id="impact" class="study-section">
                     <h3>Results</h3>
                     <ul>
-                        <li>Post-overhaul usability sessions no longer surfaced cognitive overwhelm as a primary complaint</li>
-                        <li>Pain-point maps adopted into the design team's FigJam workspace for sprint prioritization</li>
-                        <li>Research-to-design pipeline improvements enabled insight-to-iteration within sprint cadence</li>
-                        <li>Progressed from research intern to contract product designer based on scope of contribution</li>
+                        <li>Cognitive overwhelm no longer surfaced as a primary complaint when the original usability protocol was re-run post-overhaul — the explicit goal the work was scoped against</li>
+                        <li>Restraint shipped as a system default at the token/component level, so the fix held across screens built after the engagement, not just the ones tested</li>
+                        <li>Research-to-design latency cut from a ~2-week synthesis hand-off to insight-to-iteration within a single sprint</li>
+                        <li>Pain-point maps adopted into the design team's working files and used for sprint prioritization</li>
+                        <li>Promoted from research intern to contract product designer based on the scope of the contribution</li>
                     </ul>
                 </section>
 
                 <section id="reflection" class="study-section">
                     <h3>Reflection</h3>
-                    <h4>What I took from this:</h4>
-                    <p>AI interfaces introduce a design problem that most UI patterns weren't built for: the interface isn't just responding to users, it's <em>anticipating</em> them. That changes the design language required. Restraint needs to be the default. Proactive behavior needs to be earned and legible — users have to be able to see it coming and feel like they could stop it.</p>
-                    <p>Building that into a system rather than solving it screen-by-screen was the only fix that would actually hold. It's the same instinct I bring to every design system problem: solve it at the component level or you'll keep solving it forever.</p>
+                    <h4>What I'd do differently</h4>
+                    <p>I'd instrument the outcome quantitatively from the start — a perceived-control or task-confidence rating captured every session — so the before/after was a number, not a disappearance of a theme. The reframe was right, but I made the case largely on qualitative evidence, and a clean metric would have made it bulletproof and easier to defend upward.</p>
+                    <h4>What I took from it</h4>
+                    <p>AI interfaces break an assumption most UI patterns are built on: the interface isn't only responding to the user, it's <em>anticipating</em> them — and anticipation that the user can't predict or stop reads as lost control, no matter how smart it is. Restraint has to be the default, and proactivity has to be earned, telegraphed, and reversible. The instinct that carried the project is the one I bring to every system: name the mechanism, then fix it at the component level — or you'll keep fixing the same problem on every screen forever.</p>
                 </section>
 
             </article>
