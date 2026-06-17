@@ -476,11 +476,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const month = String(sfTime.getMonth() + 1).padStart(2, '0');
       const day = String(sfTime.getDate()).padStart(2, '0');
       const year = sfTime.getFullYear();
-      const hours = String(sfTime.getHours()).padStart(2, '0');
       const minutes = String(sfTime.getMinutes()).padStart(2, '0');
       const ampm = sfTime.getHours() >= 12 ? 'PM' : 'AM';
-      
-      return `${month}/${day}/${year} ${hours} ${minutes} ${ampm}`;
+      const hours = String(sfTime.getHours() % 12 || 12).padStart(2, '0');
+
+      return `${month}/${day}/${year} ${hours}:${minutes} ${ampm}`;
     };
     
     const datetimeChars = '0123456789/ :APM';

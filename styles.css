@@ -329,8 +329,7 @@ body.night-mode .project-card {
 .case-copy h3 { margin: 0 0 10px; font-size: 28px; letter-spacing: -0.01em; color: #1a1a1a; }
 .case-copy p { margin: 0 0 10px; color: #444; }
 .project-aside { font-size: 0.85rem; color: #888; font-style: italic; margin-top: 4px; }
-.case-copy .role { display: inline-block; color: #2c6bed; text-decoration: none; margin: 0 0 16px; }
-.case-copy .role:hover { text-decoration: underline; }
+.case-copy .role { display: inline-block; color: #7a7a7a; margin: 0 0 16px; }
 .tags { list-style: none; padding: 0; margin: 12px 0 20px; display: flex; gap: 10px; flex-wrap: wrap; }
 .tags li { background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; color: #7a7a7a; font-size: 13px; }
 .cs-button { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; border: 1px solid var(--border); border-radius: 999px; color: #3a3a3a; background: #fff; }
